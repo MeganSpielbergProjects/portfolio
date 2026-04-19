@@ -2,7 +2,7 @@ export type MediaItem = {
   src: string;
   alt: string;
   caption?: string;
-  type?: 'image' | 'video' | 'youtube';
+  type?: 'image' | 'video' | 'youtube' | 'pdf';
   videoId?: string;
 };
 

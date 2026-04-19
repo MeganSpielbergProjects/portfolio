@@ -20,6 +20,7 @@ export function MediaCarousel({ items, projectTitle }: MediaCarouselProps) {
   const currentItem = items[currentIndex];
   const isVideo = currentItem.type === 'video';
   const isYouTube = currentItem.type === 'youtube';
+  const isPdf = currentItem.type === 'pdf';
 
   return (
     <div className="media-carousel">
@@ -34,6 +35,14 @@ export function MediaCarousel({ items, projectTitle }: MediaCarouselProps) {
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
             style={{ minHeight: '280px' }}
+          />
+        ) : isPdf ? (
+          <iframe
+            width="100%"
+            height="100%"
+            src={currentItem.src}
+            title={currentItem.alt}
+            style={{ minHeight: '280px', border: 0 }}
           />
         ) : isVideo ? (
           <video

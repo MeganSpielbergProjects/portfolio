@@ -6,6 +6,9 @@ const scalySanctuaryLogo = '/media/scaly_sanctuary_logo.png';
 const scalySanctuaryGameLoop = '/media/scaly_sanctuary_game_loop.png';
 const scalySanctuaryPreparingSoil = '/media/scaly_sanctuary_preparing_soil.mp4';
 const fossilCameraPrototypes = '/media/fossil_camera_prototypes.png';
+const insectDetectionPipeline = '/media/insect_detection_pipeline.png';
+const insectDetectionResults = '/media/insect_detection_results.png';
+const myHabitBannerPdf = '/MyHabitBanner.pdf';
 
 export const softwareCaseStudies: CaseStudy[] = [
   {
@@ -20,7 +23,7 @@ export const softwareCaseStudies: CaseStudy[] = [
     mediaPlaceholder: 'Add app screenshots, core flow GIF, and architecture sketch.',
   },
   {
-    title: 'Confidential system integration at CGI Germany',
+    title: 'Test quality improvements at CGI Germany',
     context: 'Internship in an international team.',
     role: 'Owned test quality improvements for a Java Spring Boot application.',
     challenge:
@@ -31,22 +34,37 @@ export const softwareCaseStudies: CaseStudy[] = [
     mediaPlaceholder: 'Add sanitized pipeline screenshot and redacted test dashboard.',
   },
   {
-    title: 'SPoHF insect detection LLM research',
+    title: 'SPoHF insect detection CNN research',
     context: 'Research-focused project.',
-    role: 'Built and iterated on an LLM-centered detection approach.',
+    role: 'Built and iterated on an CNN-centered detection approach.',
     challenge: 'Design a practical workflow for insect detection using Python-heavy experimentation.',
     outcome: 'Produced a working research direction and repeatable experimentation pipeline.',
-    stack: ['Python', 'ML research', 'Data processing'],
-    mediaPlaceholder: 'Add model pipeline diagram and experiment result chart.',
+    stack: ['Python', 'ML/DL research', 'Data processing'],
+    mediaPlaceholder: '',
+    projectUrl: '/NWO%20Poster.pdf',
+    mediaItems: [
+      {
+        src: insectDetectionPipeline,
+        alt: 'Insect detection model pipeline diagram',
+        caption: 'Two stage process from using computer vision and CNNs to detect insects in images.',
+        type: 'image',
+      },
+      {
+        src: insectDetectionResults,
+        alt: 'Insect detection experiment results',
+        caption: 'Results from the insect detection pipeline.',
+        type: 'image',
+      },
+    ],
   },
   {
     title: 'Fossil citizen-science photo improvement app',
     context: 'Masters semester 1 research project.',
     role: 'Built application logic to improve quality of submitted fossil photos.',
     challenge:
-      'Help non-experts capture more useful, consistent field images that improve downstream scientific value.',
-    outcome: 'Shipped an application concept focused on practical capture guidance and photo quality improvement.',
-    stack: ['Research software', 'Python', 'User guidance design'],
+      'Help non-experts capture more useful, consistent field images that improve scientific value.',
+    outcome: 'Shipped an application prototype on practical capture guidance and photo quality improvement.',
+    stack: ['Research software', 'Python', 'React', 'User guidance design'],
     mediaPlaceholder: 'Add before/after sample images and short usage walkthrough GIF.',
     projectUrl: 'https://meganspielberg.github.io/fossil-ai-feedback/',
     githubUrl: 'https://github.com/MeganSpielberg/fossil-ai-feedback',
@@ -54,13 +72,13 @@ export const softwareCaseStudies: CaseStudy[] = [
       {
         src: fossilCameraPrototypes,
         alt: 'Fossil camera prototype iterations',
-        caption: 'Physical camera prototype designs used for field testing and photo quality improvement.',
+        caption: 'Three prototype screens compared in the research.',
         type: 'image',
       },
       {
         src: 'https://www.youtube.com/embed/NLDBz3CPx-8',
         alt: 'Fossil project demo and results',
-        caption: 'Research presentation showing the app demo and experimental results.',
+        caption: 'Demo of the fossil prototype used for testing and data collection.',
         type: 'youtube',
         videoId: 'NLDBz3CPx-8',
       },
@@ -70,9 +88,9 @@ export const softwareCaseStudies: CaseStudy[] = [
 
 export const gameJourney: GameProject[] = [
   {
-    title: 'Masters final project: reptile caretaking game',
-    arc: 'Current long-form game production. 2026.',
-    tools: ['Godot', 'Game design systems', 'Web branding'],
+    title: 'Scaly Sanctuary: A reptile caretaking game',
+    arc: 'Current long-form game in development. 2026.',
+    tools: ['Godot', 'Game design', 'Research project'],
     details:
       'Developing a learning-focused game that teaches proper reptile care, plus a dedicated studio website around the project.',
     mediaItems: [
@@ -100,17 +118,17 @@ export const gameJourney: GameProject[] = [
   {
     title: 'Ascherwald',
     arc: 'Rapid prototyping phase. 2025.',
-    tools: ['Game jam workflow', 'Public release on itch.io'],
-    details: 'Designed and shipped a playable jam project under tight constraints and published it publicly.',
+    tools: ['Game jam entry', 'Public release on itch.io'],
+    details: 'Designed and published a playable jam project.',
     projectUrl: 'https://ghostpan.itch.io/ascherwald',
     imagePath: ascherwaldTitle,
-    imageCaption: 'Atmospheric title art used for the game page card and external listing.',
+    imageCaption: 'Atmospheric title art used for the game page card.',
     mediaPlaceholder: '',
   },
   {
     title: 'Cats Against Darkness',
     arc: 'Rapid prototyping phase. 2025.',
-    tools: ['Game jam workflow', 'Public release on itch.io'],
+    tools: ['Game jam entry', 'Public release on itch.io'],
     details: 'Built and published a second jam game with a different style and mechanics direction.',
     projectUrl: 'https://ghostpan.itch.io/cats-against-darkness',
     imagePath: catsAgainstDarknessTitle,
@@ -119,10 +137,25 @@ export const gameJourney: GameProject[] = [
   },
   {
     title: 'MyHabit',
-    arc: 'Bachelor phase: first shipped game project. 2024.',
+    arc: 'Bachelor project with an external client. 2024.',
     tools: ['GDevelop', 'n8n', 'Baserow'],
     details:
-      'Built a no-code game for a client who wanted players to learn about mental health and reinforce healthier routines.',
-    mediaPlaceholder: 'Add gameplay loop GIF, mission screen, and client brief excerpt.',
+      'Built a no-code game for a client who wanted players to learn about mental health and reinforce healthier habits.',
+    mediaItems: [
+      {
+        src: 'https://www.youtube.com/embed/9l4GjBcOcbI',
+        alt: 'MyHabit gameplay demo',
+        caption: 'Live gameplay demo of the MyHabit experience.',
+        type: 'youtube',
+        videoId: '9l4GjBcOcbI',
+      },
+      {
+        src: myHabitBannerPdf,
+        alt: 'MyHabit project banner PDF',
+        caption: 'Project banner and visual summary for MyHabit.',
+        type: 'pdf',
+      },
+    ],
+    mediaPlaceholder: '',
   },
 ];
