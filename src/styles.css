@@ -1,0 +1,581 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;700&display=swap');
+
+:root {
+  color-scheme: dark;
+  --bg: #0b1020;
+  --bg-soft: rgba(11, 16, 32, 0.75);
+  --surface: rgba(18, 26, 48, 0.82);
+  --surface-strong: rgba(24, 34, 62, 0.92);
+  --text: #f3f7ff;
+  --muted: #a8b2ce;
+  --accent: #7cf3c5;
+  --accent-2: #ffbf69;
+  --border: rgba(255, 255, 255, 0.09);
+  --shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(124, 243, 197, 0.16), transparent 32%),
+    radial-gradient(circle at top right, rgba(255, 191, 105, 0.14), transparent 34%),
+    linear-gradient(180deg, #08101f 0%, #0b1020 45%, #060912 100%);
+  color: var(--text);
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  font: inherit;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.page {
+  position: relative;
+  width: min(1120px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 28px 0 48px;
+}
+
+.game-page {
+  --bg-soft: rgba(31, 16, 10, 0.76);
+  --surface: rgba(44, 22, 14, 0.84);
+  --text: #fff4e4;
+  --muted: #f0cfaf;
+  --accent: #ff9561;
+  --accent-2: #ffd166;
+  --border: rgba(255, 209, 161, 0.24);
+}
+
+.game-page::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 10% 12%, rgba(255, 149, 97, 0.16), transparent 32%),
+    radial-gradient(circle at 90% 16%, rgba(255, 209, 102, 0.18), transparent 32%);
+  z-index: -1;
+}
+
+.game-page .backdrop-one {
+  background: rgba(255, 149, 97, 0.26);
+}
+
+.game-page .backdrop-two {
+  background: rgba(255, 209, 102, 0.2);
+}
+
+.game-page .panel {
+  box-shadow: 0 20px 60px rgba(14, 5, 1, 0.45);
+}
+
+.game-page .target {
+  background:
+    radial-gradient(circle at 35% 35%, #fff5ec 0%, #fff5ec 11%, transparent 13%),
+    radial-gradient(circle at 50% 50%, #ff9f6e 0%, #ff8554 46%, #bc4b21 100%);
+  box-shadow:
+    0 0 0 10px rgba(255, 149, 97, 0.1),
+    0 16px 30px rgba(0, 0, 0, 0.3);
+}
+
+.game-page .target-active {
+  animation: emberPulse 1.35s infinite ease-in-out;
+}
+
+.backdrop {
+  position: fixed;
+  inset: auto;
+  pointer-events: none;
+  border-radius: 999px;
+  filter: blur(60px);
+  opacity: 0.5;
+  z-index: -1;
+}
+
+.backdrop-one {
+  top: 40px;
+  right: 8vw;
+  width: 220px;
+  height: 220px;
+  background: rgba(124, 243, 197, 0.25);
+}
+
+.backdrop-two {
+  top: 320px;
+  left: 2vw;
+  width: 280px;
+  height: 280px;
+  background: rgba(255, 191, 105, 0.18);
+}
+
+.panel {
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(18px);
+}
+
+.hero {
+  padding: 40px;
+  display: grid;
+  gap: 20px;
+}
+
+.eyebrow {
+  margin: 0;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.75rem;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+h1 {
+  font-size: clamp(2.8rem, 7vw, 5.8rem);
+  line-height: 0.94;
+  max-width: 10ch;
+}
+
+h2 {
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+}
+
+.hero-text,
+.about-grid p,
+.project-card p,
+.contact-panel p,
+.game-copy p,
+.gate-text {
+  color: var(--muted);
+  font-size: 1.03rem;
+  line-height: 1.7;
+}
+
+.hero-text {
+  max-width: 62ch;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 18px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  transition:
+    transform 160ms ease,
+    border-color 160ms ease,
+    background-color 160ms ease;
+}
+
+.button:hover {
+  transform: translateY(-1px);
+}
+
+.button-dark {
+  background: linear-gradient(135deg, var(--accent) 0%, #47d3ac 100%);
+  color: #07111d;
+  font-weight: 700;
+}
+
+.button-light {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.hero-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.hero-metrics article,
+.project-card,
+.about-panel,
+.contact-panel,
+.game-panel,
+.game-gate,
+.journey-card,
+.locked-state {
+  background: var(--surface);
+}
+
+.hero-metrics article {
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 16px;
+}
+
+.hero-metrics strong {
+  display: block;
+  font-size: 1.7rem;
+}
+
+.hero-metrics span {
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.about-panel,
+.contact-panel,
+.game-panel,
+.game-gate,
+.projects-grid {
+  margin-top: 20px;
+}
+
+.about-panel,
+.contact-panel,
+.game-panel,
+.game-gate {
+  padding: 28px;
+}
+
+.section-heading {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.about-grid ul {
+  margin: 0;
+  padding-left: 20px;
+  color: var(--text);
+  line-height: 1.9;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.project-card {
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 22px;
+}
+
+.project-kicker {
+  color: var(--accent-2);
+  font-size: 0.8rem;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 10px;
+}
+
+.project-card h3 {
+  font-size: 1.35rem;
+  margin-bottom: 10px;
+}
+
+.detail-row {
+  margin-top: 10px;
+  color: var(--muted);
+}
+
+.detail-row strong {
+  color: var(--text);
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.tags span {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: 0.82rem;
+  color: var(--text);
+}
+
+.media-placeholder {
+  margin-top: 16px;
+  border: 1px dashed rgba(255, 255, 255, 0.3);
+  border-radius: 14px;
+  padding: 12px;
+  display: grid;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+
+.media-card-link {
+  display: block;
+  border-radius: 14px;
+  outline: 1px solid rgba(255, 255, 255, 0.2);
+  outline-offset: 2px;
+}
+
+.media-card-link:hover {
+  outline: 2px solid rgba(255, 255, 255, 0.38);
+}
+
+.media-card-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.media-placeholder p {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  font-size: 0.75rem;
+}
+
+.media-placeholder span {
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.jam-title-image {
+  width: 100%;
+  max-height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  transition: transform 150ms ease;
+}
+
+.media-card-link:hover .jam-title-image {
+  transform: translateY(-2px);
+}
+
+.media-card-link:hover .media-placeholder {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.image-caption {
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.game-gate {
+  border-style: solid;
+}
+
+.journey-shell {
+  margin-top: 14px;
+  display: grid;
+  gap: 20px;
+}
+
+.journey-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.journey-card,
+.locked-state {
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.game-hero h1 {
+  max-width: 11ch;
+}
+
+.locked-state {
+  margin-top: 14px;
+}
+
+.locked-state p {
+  color: var(--muted);
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+}
+
+.game-shell {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: center;
+}
+
+.game-copy {
+  display: grid;
+  gap: 14px;
+}
+
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.stats span,
+.game-status {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
+.playfield {
+  position: relative;
+  height: 320px;
+  border-radius: 24px;
+  border: 1px solid var(--border);
+  background:
+    linear-gradient(transparent 95%, rgba(255, 255, 255, 0.06) 95%) 0 0 / 100% 28px,
+    linear-gradient(90deg, transparent 95%, rgba(255, 255, 255, 0.06) 95%) 0 0 / 28px 100%,
+    linear-gradient(135deg, rgba(124, 243, 197, 0.12), rgba(255, 191, 105, 0.08));
+  overflow: hidden;
+}
+
+.playfield-grid {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, transparent 0%, rgba(255, 255, 255, 0.02) 100%);
+}
+
+.target {
+  position: absolute;
+  width: 56px;
+  height: 56px;
+  border: 0;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 35% 35%, #ffffff 0%, #ffffff 11%, transparent 13%),
+    radial-gradient(circle at 50% 50%, var(--accent) 0%, #4bd5af 46%, #19886b 100%);
+  box-shadow:
+    0 0 0 10px rgba(124, 243, 197, 0.08),
+    0 16px 30px rgba(0, 0, 0, 0.3);
+  transform: scale(0.88);
+  opacity: 0.45;
+  transition:
+    transform 160ms ease,
+    opacity 160ms ease;
+}
+
+.target-active {
+  opacity: 1;
+  transform: scale(1);
+  cursor: pointer;
+  animation: pulse 1.35s infinite ease-in-out;
+}
+
+.target:disabled {
+  cursor: default;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 10px rgba(124, 243, 197, 0.1),
+      0 16px 30px rgba(0, 0, 0, 0.3);
+  }
+  50% {
+    box-shadow:
+      0 0 0 18px rgba(124, 243, 197, 0.04),
+      0 22px 34px rgba(0, 0, 0, 0.32);
+  }
+}
+
+@keyframes emberPulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 10px rgba(255, 149, 97, 0.1),
+      0 16px 30px rgba(0, 0, 0, 0.3);
+  }
+  50% {
+    box-shadow:
+      0 0 0 20px rgba(255, 149, 97, 0.05),
+      0 22px 34px rgba(0, 0, 0, 0.32);
+  }
+}
+
+@media (max-width: 900px) {
+  .hero-metrics,
+  .projects-grid,
+  .journey-grid,
+  .game-shell,
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .page {
+    width: min(100% - 20px, 1120px);
+    padding-top: 20px;
+  }
+
+  .hero,
+  .about-panel,
+  .contact-panel,
+  .game-panel,
+  .game-gate {
+    padding: 22px;
+  }
+
+  .playfield {
+    height: 280px;
+  }
+}
+
+@media (max-width: 560px) {
+  h1 {
+    max-width: none;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+  }
+
+  .button {
+    width: 100%;
+  }
+}
