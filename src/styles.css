@@ -221,6 +221,32 @@ h2 {
   border-color: rgba(255, 255, 255, 0.08);
 }
 
+.button-small {
+  min-height: 36px;
+  padding: 0 14px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.project-links {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+.project-links .button-small {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.12);
+  color: var(--text);
+  text-decoration: none;
+}
+
+.project-links .button-small:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
 .hero-metrics {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -380,6 +406,35 @@ h2 {
   line-height: 1.5;
 }
 
+.media-gallery {
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+}
+
+.media-gallery-item {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 10px;
+  overflow: hidden;
+  display: grid;
+  gap: 6px;
+}
+
+.media-gallery-item img {
+  width: 100%;
+  max-height: 140px;
+  object-fit: cover;
+}
+
+.media-gallery-item .image-caption {
+  padding: 6px 8px;
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--muted);
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
 .jam-title-image {
   width: 100%;
   max-height: 180px;
@@ -402,6 +457,100 @@ h2 {
   font-size: 0.88rem;
 }
 
+.media-carousel {
+  margin-top: 16px;
+  display: grid;
+  gap: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 0;
+}
+
+.carousel-viewport {
+  width: 100%;
+  min-height: 200px;
+  max-height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.02);
+  overflow: hidden;
+}
+
+.carousel-viewport img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.carousel-viewport video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.carousel-controls {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 16px;
+  align-items: center;
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.carousel-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text);
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 150ms ease;
+  flex-shrink: 0;
+}
+
+.carousel-arrow:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: scale(1.05);
+}
+
+.carousel-arrow:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.carousel-arrow:active {
+  transform: scale(0.95);
+}
+
+.carousel-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.carousel-counter {
+  font-size: 0.8rem;
+  color: var(--muted);
+  font-family: 'IBM Plex Mono', monospace;
+  text-align: center;
+}
+
+.carousel-info .image-caption {
+  font-size: 0.85rem;
+  line-height: 1.4;
+  text-align: center;
+}
+
 .game-gate {
   border-style: solid;
 }
@@ -416,6 +565,10 @@ h2 {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 14px;
+}
+
+.journey-grid .journey-card:first-child {
+  grid-column: span 2;
 }
 
 .journey-card,
@@ -548,6 +701,10 @@ h2 {
     grid-template-columns: 1fr;
   }
 
+  .journey-grid .journey-card:first-child {
+    grid-column: span 1;
+  }
+
   .page {
     width: min(100% - 20px, 1120px);
     padding-top: 20px;
@@ -563,6 +720,23 @@ h2 {
 
   .playfield {
     height: 280px;
+  }
+
+  .carousel-viewport {
+    min-height: 140px;
+    max-height: 200px;
+  }
+
+  .carousel-controls {
+    grid-template-columns: auto 1fr auto;
+    gap: 12px;
+    padding: 12px 14px;
+  }
+
+  .carousel-arrow {
+    width: 32px;
+    height: 32px;
+    font-size: 1rem;
   }
 }
 
