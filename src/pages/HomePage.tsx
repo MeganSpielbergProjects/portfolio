@@ -1,4 +1,5 @@
 import { CaseStudyCard } from '../components/CaseStudyCard';
+import { NavBar } from '../components/NavBar';
 import { softwareCaseStudies } from '../data';
 
 interface HomePageProps {
@@ -11,40 +12,54 @@ export function HomePage({ onNavigateGame }: HomePageProps) {
       <div className="backdrop backdrop-one" />
       <div className="backdrop backdrop-two" />
 
+      <NavBar
+        links={[
+          { label: 'About', href: '#about' },
+          { label: 'Projects', href: '#projects' },
+          { label: 'Contact', href: '#contact' },
+        ]}
+        switchChecked={false}
+        onSwitch={onNavigateGame}
+      />
+
       <section className="hero panel">
-        <p className="eyebrow">Software engineer and game dev</p>
-        <h1>Building useful software and playful systems, from research tools to educational games.</h1>
-        <p className="hero-text">
-          This portfolio is structured as case studies so confidential and university work still shows clear technical
-          ownership, decisions, and impact.
-        </p>
+        <div className="hero-layout">
+          <div className="hero-copy">
+            <p className="eyebrow">Software engineer and game dev</p>
+            <h1>Hello, I'm Megan and I build software tools.</h1>
 
-        <div className="hero-actions">
-          <a className="button button-dark" href="#projects">
-            Explore case studies
-          </a>
-          <button className="button button-light" type="button" onClick={onNavigateGame}>
-            Enter game journey page
-          </button>
-        </div>
+            <div className="hero-actions">
+              <a className="button button-dark" href="#projects">
+                Explore projects
+              </a>
+              <button className="button button-light" type="button" onClick={onNavigateGame}>
+                Enter game journey page
+              </button>
+            </div>
 
-        <div className="hero-metrics">
-          <article>
-            <strong>4</strong>
-            <span>software case studies</span>
-          </article>
-          <article>
-            <strong>3</strong>
-            <span>game-dev milestones</span>
-          </article>
-          <article>
-            <strong>1</strong>
-            <span>dedicated game page</span>
-          </article>
+            <div className="hero-metrics">
+              <article>
+                <strong>4</strong>
+                <span>software projects</span>
+              </article>
+              <article>
+                <strong>3</strong>
+                <span>game-dev milestones</span>
+              </article>
+              <article>
+                <strong>1</strong>
+                <span>dedicated game page</span>
+              </article>
+            </div>
+          </div>
+
+          <div className="hero-visual" aria-hidden="true">
+            <img className="hero-character" src="/media/megan_character.png" alt="" />
+          </div>
         </div>
       </section>
 
-      <section className="panel about-panel">
+      <section className="panel about-panel" id="about">
         <div className="section-heading">
           <p className="eyebrow">About</p>
           <h2>How this portfolio is organized</h2>
@@ -64,8 +79,8 @@ export function HomePage({ onNavigateGame }: HomePageProps) {
 
       <section className="panel" id="projects">
         <div className="section-heading">
-          <p className="eyebrow">Selected work</p>
-          <h2>Software engineering case studies</h2>
+          <p className="eyebrow">Selected projects</p>
+          <h2>Software engineering projects</h2>
         </div>
 
         <div className="projects-grid">
@@ -75,26 +90,13 @@ export function HomePage({ onNavigateGame }: HomePageProps) {
         </div>
       </section>
 
-      <section className="panel game-gate">
-        <div className="section-heading">
-          <p className="eyebrow">Game dev</p>
-          <h2>Separate game page</h2>
-        </div>
-        <p className="gate-text">
-          Your game development work now lives on its own page so you can style it with a different visual identity.
-        </p>
-        <button className="button button-light" type="button" onClick={onNavigateGame}>
-          Open game journey page
-        </button>
-      </section>
-
-      <section className="panel contact-panel">
+      <section className="panel contact-panel" id="contact">
         <div className="section-heading">
           <p className="eyebrow">Contact</p>
           <h2>Next step</h2>
         </div>
         <p>
-          Add your GitHub, LinkedIn, and email here. You can also place a button to your CV and a short availability
+          Add GitHub, LinkedIn, and email here. also place a button to CV and a short availability
           note for internships or junior roles.
         </p>
       </section>

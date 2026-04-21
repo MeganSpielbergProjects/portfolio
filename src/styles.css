@@ -139,10 +139,178 @@ button {
   backdrop-filter: blur(18px);
 }
 
+.nav {
+  position: sticky;
+  top: 10px;
+  z-index: 40;
+  margin-bottom: 16px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  background: rgba(9, 14, 27, 0.78);
+  backdrop-filter: blur(12px);
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+}
+
+.nav-title {
+  font-size: 0.84rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  color: var(--muted);
+}
+
+.nav-links {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-link {
+  border: 0;
+  min-height: 32px;
+  padding: 0 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: var(--muted);
+  font-size: 0.84rem;
+  font-family: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    color 160ms ease,
+    opacity 160ms ease;
+}
+
+.nav-link:hover {
+  color: var(--text);
+}
+
+.nav-link-active {
+  color: var(--text);
+}
+
+.nav-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.nav-switch {
+  min-height: 32px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 999px;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: opacity 160ms ease;
+}
+
+.nav-switch-text {
+  color: var(--muted);
+  font-size: 0.7rem;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  letter-spacing: 0.08em;
+}
+
+.nav-switch:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.nav-switch-track {
+  width: 42px;
+  height: 24px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.08);
+  padding: 2px;
+  display: flex;
+  align-items: center;
+}
+
+.nav-switch-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+  transform: translateX(0);
+  transition: transform 180ms ease;
+}
+
+.nav-switch[aria-checked='true'] .nav-switch-track {
+  background: rgba(124, 243, 197, 0.22);
+  border-color: rgba(124, 243, 197, 0.5);
+}
+
+.nav-switch[aria-checked='true'] .nav-switch-thumb {
+  transform: translateX(18px);
+}
+
+.nav-switch[aria-checked='false'] .nav-switch-text:first-child,
+.nav-switch[aria-checked='true'] .nav-switch-text:last-child {
+  color: var(--text);
+}
+
+.page:not(.game-page) .panel {
+  border-width: 1.25px;
+  border-color: rgba(255, 255, 255, 0.14);
+  box-shadow:
+    var(--shadow),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
 .hero {
   padding: 40px;
   display: grid;
   gap: 20px;
+}
+
+.hero-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(260px, 0.8fr);
+  gap: 28px;
+  align-items: center;
+}
+
+.hero-copy {
+  display: grid;
+  gap: 20px;
+  justify-items: start;
+}
+
+.hero-visual {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.hero-character {
+  width: min(100%, 340px);
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 24px 40px rgba(0, 0, 0, 0.32));
+  user-select: none;
+  pointer-events: none;
 }
 
 .eyebrow {
@@ -270,6 +438,11 @@ h2 {
   padding: 16px;
 }
 
+.page:not(.game-page) .hero-metrics article {
+  border-width: 1.25px;
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
 .hero-metrics strong {
   display: block;
   font-size: 1.7rem;
@@ -288,10 +461,15 @@ h2 {
   margin-top: 20px;
 }
 
+#projects {
+  margin-top: 28px;
+}
+
 .about-panel,
 .contact-panel,
 .game-panel,
-.game-gate {
+.game-gate,
+#projects {
   padding: 28px;
 }
 
@@ -325,6 +503,14 @@ h2 {
   border: 1px solid var(--border);
   border-radius: 24px;
   padding: 22px;
+}
+
+.page:not(.game-page) .project-card,
+.page:not(.game-page) .journey-card,
+.page:not(.game-page) .locked-state,
+.page:not(.game-page) .playfield {
+  border-width: 1.25px;
+  border-color: rgba(255, 255, 255, 0.14);
 }
 
 .project-kicker {
@@ -714,8 +900,21 @@ h2 {
   .about-panel,
   .contact-panel,
   .game-panel,
-  .game-gate {
+  .game-gate,
+  #projects {
     padding: 22px;
+  }
+
+  .hero-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-visual {
+    justify-content: flex-start;
+  }
+
+  .hero-character {
+    width: min(100%, 280px);
   }
 
   .playfield {
@@ -741,12 +940,34 @@ h2 {
 }
 
 @media (max-width: 560px) {
+  .nav {
+    top: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 10px 12px;
+  }
+
+  .nav-links {
+    width: 100%;
+    justify-content: flex-start;
+    overflow-x: auto;
+    scrollbar-width: thin;
+  }
+
+  .nav-switch {
+    margin-left: auto;
+  }
+
   h1 {
     max-width: none;
   }
 
   .hero-actions {
     flex-direction: column;
+  }
+
+  .hero-character {
+    width: min(100%, 220px);
   }
 
   .button {
