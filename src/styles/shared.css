@@ -1,16 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;700&display=swap');
 
 :root {
   color-scheme: dark;
   --bg: #0b1020;
-  --bg-soft: rgba(11, 16, 32, 0.75);
-  --surface: rgba(18, 26, 48, 0.82);
-  --surface-strong: rgba(24, 34, 62, 0.92);
+  --bg-soft: rgba(11, 16, 32, 0.8);
+  --surface: rgba(18, 26, 48, 0.84);
+  --surface-strong: rgba(24, 34, 62, 0.95);
   --text: #f3f7ff;
   --muted: #a8b2ce;
   --accent: #7cf3c5;
   --accent-2: #ffbf69;
-  --border: rgba(255, 255, 255, 0.09);
+  --border: rgba(255, 255, 255, 0.1);
   --shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
 }
 
@@ -27,8 +27,8 @@ body {
   min-width: 320px;
   min-height: 100vh;
   background:
-    radial-gradient(circle at top left, rgba(124, 243, 197, 0.16), transparent 32%),
-    radial-gradient(circle at top right, rgba(255, 191, 105, 0.14), transparent 34%),
+    radial-gradient(circle at top left, rgba(124, 243, 197, 0.08), transparent 30%),
+    radial-gradient(circle at top right, rgba(255, 191, 105, 0.07), transparent 28%),
     linear-gradient(180deg, #08101f 0%, #0b1020 45%, #060912 100%);
   color: var(--text);
   font-family: 'Space Grotesk', system-ui, sans-serif;
@@ -54,55 +54,9 @@ button {
 
 .page {
   position: relative;
-  width: min(1120px, calc(100% - 32px));
+  width: min(1160px, calc(100% - 32px));
   margin: 0 auto;
   padding: 28px 0 48px;
-}
-
-.game-page {
-  --bg-soft: rgba(31, 16, 10, 0.76);
-  --surface: rgba(44, 22, 14, 0.84);
-  --text: #fff4e4;
-  --muted: #f0cfaf;
-  --accent: #ff9561;
-  --accent-2: #ffd166;
-  --border: rgba(255, 209, 161, 0.24);
-}
-
-.game-page::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(circle at 10% 12%, rgba(255, 149, 97, 0.16), transparent 32%),
-    radial-gradient(circle at 90% 16%, rgba(255, 209, 102, 0.18), transparent 32%);
-  z-index: -1;
-}
-
-.game-page .backdrop-one {
-  background: rgba(255, 149, 97, 0.26);
-}
-
-.game-page .backdrop-two {
-  background: rgba(255, 209, 102, 0.2);
-}
-
-.game-page .panel {
-  box-shadow: 0 20px 60px rgba(14, 5, 1, 0.45);
-}
-
-.game-page .target {
-  background:
-    radial-gradient(circle at 35% 35%, #fff5ec 0%, #fff5ec 11%, transparent 13%),
-    radial-gradient(circle at 50% 50%, #ff9f6e 0%, #ff8554 46%, #bc4b21 100%);
-  box-shadow:
-    0 0 0 10px rgba(255, 149, 97, 0.1),
-    0 16px 30px rgba(0, 0, 0, 0.3);
-}
-
-.game-page .target-active {
-  animation: emberPulse 1.35s infinite ease-in-out;
 }
 
 .backdrop {
@@ -111,7 +65,7 @@ button {
   pointer-events: none;
   border-radius: 999px;
   filter: blur(60px);
-  opacity: 0.5;
+  opacity: 0.45;
   z-index: -1;
 }
 
@@ -120,7 +74,7 @@ button {
   right: 8vw;
   width: 220px;
   height: 220px;
-  background: rgba(124, 243, 197, 0.25);
+  background: rgba(124, 243, 197, 0.2);
 }
 
 .backdrop-two {
@@ -128,7 +82,7 @@ button {
   left: 2vw;
   width: 280px;
   height: 280px;
-  background: rgba(255, 191, 105, 0.18);
+  background: rgba(255, 191, 105, 0.14);
 }
 
 .panel {
@@ -173,6 +127,7 @@ button {
   gap: 6px;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .nav-link {
@@ -201,7 +156,11 @@ button {
   color: var(--text);
 }
 
-.nav-link:focus-visible {
+.nav-link:focus-visible,
+.nav-switch:focus-visible,
+.button:focus-visible,
+.carousel-arrow:focus-visible,
+.media-card-link:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
@@ -229,11 +188,6 @@ button {
   font-size: 0.7rem;
   font-family: 'IBM Plex Mono', ui-monospace, monospace;
   letter-spacing: 0.08em;
-}
-
-.nav-switch:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
 }
 
 .nav-switch-track {
@@ -269,14 +223,6 @@ button {
 .nav-switch[aria-checked='false'] .nav-switch-text:first-child,
 .nav-switch[aria-checked='true'] .nav-switch-text:last-child {
   color: var(--text);
-}
-
-.page:not(.game-page) .panel {
-  border-width: 1.25px;
-  border-color: rgba(255, 255, 255, 0.14);
-  box-shadow:
-    var(--shadow),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.05);
 }
 
 .hero {
@@ -333,10 +279,12 @@ h1 {
   font-size: clamp(2.8rem, 7vw, 5.8rem);
   line-height: 0.94;
   max-width: 10ch;
+  letter-spacing: -0.05em;
 }
 
 h2 {
   font-size: clamp(1.6rem, 3vw, 2.4rem);
+  letter-spacing: -0.03em;
 }
 
 .hero-text,
@@ -371,7 +319,8 @@ h2 {
   transition:
     transform 160ms ease,
     border-color 160ms ease,
-    background-color 160ms ease;
+    background-color 160ms ease,
+    box-shadow 160ms ease;
 }
 
 .button:hover {
@@ -438,11 +387,6 @@ h2 {
   padding: 16px;
 }
 
-.page:not(.game-page) .hero-metrics article {
-  border-width: 1.25px;
-  border-color: rgba(255, 255, 255, 0.12);
-}
-
 .hero-metrics strong {
   display: block;
   font-size: 1.7rem;
@@ -505,12 +449,95 @@ h2 {
   padding: 22px;
 }
 
-.page:not(.game-page) .project-card,
-.page:not(.game-page) .journey-card,
-.page:not(.game-page) .locked-state,
-.page:not(.game-page) .playfield {
-  border-width: 1.25px;
-  border-color: rgba(255, 255, 255, 0.14);
+.preview-card {
+  width: 100%;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  display: grid;
+  gap: 14px;
+  cursor: pointer;
+}
+
+.preview-copy {
+  display: grid;
+  gap: 8px;
+}
+
+.preview-description {
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.45;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}
+
+.thumbnail-placeholder {
+  border-radius: 14px;
+  min-height: 136px;
+  border: 1px dashed rgba(255, 255, 255, 0.26);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.08), transparent 45%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+  display: grid;
+  place-items: center;
+}
+
+.preview-thumbnail-with-image {
+  overflow: hidden;
+  border-style: solid;
+}
+
+.preview-thumbnail-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.thumbnail-placeholder span {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 0.76rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.card-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  padding: clamp(10px, 2.8vh, 28px);
+  display: grid;
+  place-items: center;
+  overflow-y: auto;
+  background: rgba(3, 6, 12, 0.74);
+  backdrop-filter: blur(8px);
+}
+
+.card-overlay-panel {
+  width: min(1080px, 96vw);
+  min-height: 78vh;
+  max-height: 92vh;
+  overflow-y: auto;
+  border-radius: 22px;
+  border: 1px solid var(--border);
+  background: var(--surface-strong);
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.52);
+  padding: 22px;
+}
+
+.card-overlay-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 8px;
 }
 
 .project-kicker {
@@ -544,7 +571,7 @@ h2 {
 }
 
 .tags span {
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 999px;
   padding: 6px 10px;
   font-size: 0.82rem;
@@ -561,7 +588,6 @@ h2 {
   background: rgba(255, 255, 255, 0.02);
 }
 
-
 .media-card-link {
   display: block;
   border-radius: 14px;
@@ -571,11 +597,6 @@ h2 {
 
 .media-card-link:hover {
   outline: 2px solid rgba(255, 255, 255, 0.38);
-}
-
-.media-card-link:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 3px;
 }
 
 .media-placeholder p {
@@ -653,6 +674,15 @@ h2 {
   padding: 0;
 }
 
+.card-overlay-panel .media-carousel {
+  margin-top: 20px;
+}
+
+.card-overlay-panel .carousel-viewport {
+  min-height: 260px;
+  max-height: 420px;
+}
+
 .carousel-viewport {
   width: 100%;
   min-height: 200px;
@@ -664,12 +694,7 @@ h2 {
   overflow: hidden;
 }
 
-.carousel-viewport img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
+.carousel-viewport img,
 .carousel-viewport video {
   width: 100%;
   height: 100%;
@@ -708,11 +733,6 @@ h2 {
   transform: scale(1.05);
 }
 
-.carousel-arrow:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
-}
-
 .carousel-arrow:active {
   transform: scale(0.95);
 }
@@ -737,10 +757,6 @@ h2 {
   text-align: center;
 }
 
-.game-gate {
-  border-style: solid;
-}
-
 .journey-shell {
   margin-top: 14px;
   display: grid;
@@ -757,146 +773,44 @@ h2 {
   grid-column: span 2;
 }
 
-.journey-card,
-.locked-state {
+.journey-card {
   border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 20px;
-}
-
-.game-hero h1 {
-  max-width: 11ch;
-}
-
-.locked-state {
-  margin-top: 14px;
-}
-
-.locked-state p {
-  color: var(--muted);
-  font-family: 'IBM Plex Mono', ui-monospace, monospace;
-}
-
-.game-shell {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  align-items: center;
-}
-
-.game-copy {
-  display: grid;
-  gap: 14px;
-}
-
-.stats {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.stats span,
-.game-status {
-  font-family: 'IBM Plex Mono', ui-monospace, monospace;
-  font-size: 0.9rem;
-  color: var(--text);
-}
-
-.playfield {
-  position: relative;
-  height: 320px;
   border-radius: 24px;
+  padding: 22px;
+}
+
+.locked-state {
   border: 1px solid var(--border);
-  background:
-    linear-gradient(transparent 95%, rgba(255, 255, 255, 0.06) 95%) 0 0 / 100% 28px,
-    linear-gradient(90deg, transparent 95%, rgba(255, 255, 255, 0.06) 95%) 0 0 / 28px 100%,
-    linear-gradient(135deg, rgba(124, 243, 197, 0.12), rgba(255, 191, 105, 0.08));
-  overflow: hidden;
+  border-radius: 24px;
+  padding: 24px;
 }
 
-.playfield-grid {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at center, transparent 0%, rgba(255, 255, 255, 0.02) 100%);
-}
-
-.target {
-  position: absolute;
-  width: 56px;
-  height: 56px;
-  border: 0;
-  border-radius: 50%;
-  background:
-    radial-gradient(circle at 35% 35%, #ffffff 0%, #ffffff 11%, transparent 13%),
-    radial-gradient(circle at 50% 50%, var(--accent) 0%, #4bd5af 46%, #19886b 100%);
-  box-shadow:
-    0 0 0 10px rgba(124, 243, 197, 0.08),
-    0 16px 30px rgba(0, 0, 0, 0.3);
-  transform: scale(0.88);
-  opacity: 0.45;
-  transition:
-    transform 160ms ease,
-    opacity 160ms ease;
-}
-
-.target-active {
-  opacity: 1;
-  transform: scale(1);
-  cursor: pointer;
-  animation: pulse 1.35s infinite ease-in-out;
-}
-
-.target:disabled {
-  cursor: default;
-}
-
-@keyframes pulse {
-  0%,
-  100% {
-    box-shadow:
-      0 0 0 10px rgba(124, 243, 197, 0.1),
-      0 16px 30px rgba(0, 0, 0, 0.3);
+@media (max-width: 980px) {
+  .nav {
+    position: static;
+    flex-direction: column;
+    align-items: stretch;
   }
-  50% {
-    box-shadow:
-      0 0 0 18px rgba(124, 243, 197, 0.04),
-      0 22px 34px rgba(0, 0, 0, 0.32);
-  }
-}
 
-@keyframes emberPulse {
-  0%,
-  100% {
-    box-shadow:
-      0 0 0 10px rgba(255, 149, 97, 0.1),
-      0 16px 30px rgba(0, 0, 0, 0.3);
+  .nav-links {
+    justify-content: flex-start;
   }
-  50% {
-    box-shadow:
-      0 0 0 20px rgba(255, 149, 97, 0.05),
-      0 22px 34px rgba(0, 0, 0, 0.32);
-  }
-}
 
-@media (max-width: 900px) {
-  .hero-metrics,
+  .hero-layout,
+  .about-grid,
   .projects-grid,
-  .journey-grid,
-  .game-shell,
-  .about-grid {
+  .journey-grid {
     grid-template-columns: 1fr;
   }
 
   .journey-grid .journey-card:first-child {
-    grid-column: span 1;
+    grid-column: auto;
   }
 
-  .page {
-    width: min(100% - 20px, 1120px);
-    padding-top: 20px;
+  .hero {
+    padding: 28px 22px;
   }
 
-  .hero,
   .about-panel,
   .contact-panel,
   .game-panel,
@@ -905,72 +819,35 @@ h2 {
     padding: 22px;
   }
 
-  .hero-layout {
-    grid-template-columns: 1fr;
-  }
-
-  .hero-visual {
-    justify-content: flex-start;
-  }
-
   .hero-character {
     width: min(100%, 280px);
   }
 
-  .playfield {
-    height: 280px;
+  .card-overlay {
+    padding: 12px;
   }
 
-  .carousel-viewport {
-    min-height: 140px;
-    max-height: 200px;
+  .card-overlay-panel {
+    padding: 18px;
+    width: min(1080px, 100%);
+    min-height: 80vh;
+    max-height: 94vh;
+  }
+}
+
+@media (max-width: 640px) {
+  .page {
+    width: min(100% - 20px, 1160px);
+    padding: 18px 0 28px;
+  }
+
+  .hero-metrics {
+    grid-template-columns: 1fr;
   }
 
   .carousel-controls {
     grid-template-columns: auto 1fr auto;
-    gap: 12px;
-    padding: 12px 14px;
-  }
-
-  .carousel-arrow {
-    width: 32px;
-    height: 32px;
-    font-size: 1rem;
-  }
-}
-
-@media (max-width: 560px) {
-  .nav {
-    top: 8px;
-    flex-wrap: wrap;
-    align-items: center;
-    padding: 10px 12px;
-  }
-
-  .nav-links {
-    width: 100%;
-    justify-content: flex-start;
-    overflow-x: auto;
-    scrollbar-width: thin;
-  }
-
-  .nav-switch {
-    margin-left: auto;
-  }
-
-  h1 {
-    max-width: none;
-  }
-
-  .hero-actions {
-    flex-direction: column;
-  }
-
-  .hero-character {
-    width: min(100%, 220px);
-  }
-
-  .button {
-    width: 100%;
+    gap: 10px;
+    padding: 12px;
   }
 }

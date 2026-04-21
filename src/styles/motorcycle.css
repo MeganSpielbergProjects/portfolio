@@ -1,0 +1,818 @@
+.motorcycle-page {
+  --bg-soft: rgba(24, 16, 34, 0.82);
+  --surface: rgba(38, 24, 52, 0.9);
+  --surface-strong: rgba(52, 30, 66, 0.97);
+  --text: #fff4ea;
+  --muted: #e8c7aa;
+  --accent: #ffb25c;
+  --accent-2: #ffe07f;
+  --border: rgba(255, 186, 102, 0.18);
+  --shadow: 0 30px 100px rgba(5, 2, 10, 0.42);
+}
+
+.motorcycle-page::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 50% 14%, rgba(255, 223, 127, 0.28), transparent 12%),
+    radial-gradient(circle at 70% 28%, rgba(255, 178, 92, 0.18), transparent 20%),
+    radial-gradient(circle at 15% 20%, rgba(160, 110, 255, 0.18), transparent 18%),
+    linear-gradient(180deg, #10061a 0%, #1a1230 32%, #27233d 58%, #f08f46 100%);
+}
+
+.motorcycle-page .backdrop-one {
+  background: rgba(255, 223, 127, 0.26);
+}
+
+.motorcycle-page .backdrop-two {
+  background: rgba(160, 110, 255, 0.16);
+}
+
+.motorcycle-page .nav {
+  background: rgba(20, 12, 26, 0.82);
+  border-color: rgba(255, 186, 102, 0.16);
+}
+
+.motorcycle-hero,
+.journey-board,
+.sunset-panel {
+  position: relative;
+  overflow: hidden;
+}
+
+.motorcycle-hero {
+  padding: 40px;
+  background:
+    radial-gradient(circle at 78% 24%, rgba(255, 223, 127, 0.22), transparent 18%),
+    radial-gradient(circle at 20% 18%, rgba(160, 110, 255, 0.16), transparent 20%),
+    linear-gradient(180deg, rgba(29, 16, 39, 0.92), rgba(20, 12, 26, 0.96));
+}
+
+.motorcycle-hero::after,
+.journey-board::after,
+.sunset-panel::after {
+  content: '';
+  position: absolute;
+  inset: 14px;
+  border-radius: 22px;
+  border: 1px solid rgba(255, 223, 127, 0.08);
+  pointer-events: none;
+}
+
+.motorcycle-hero-layout {
+  align-items: stretch;
+}
+
+.motorcycle-hero-copy {
+  justify-content: center;
+}
+
+.journey-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.journey-badges span {
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 223, 127, 0.16);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text);
+  font-size: 0.84rem;
+}
+
+.journey-sky {
+  position: relative;
+  min-height: 360px;
+  border-radius: 28px;
+  border: 1px solid rgba(255, 223, 127, 0.14);
+  background:
+    linear-gradient(180deg, rgba(16, 8, 26, 0.2), rgba(8, 5, 12, 0.3)),
+    radial-gradient(circle at top center, rgba(255, 223, 127, 0.3), transparent 18%),
+    linear-gradient(180deg, rgba(42, 32, 64, 0.5), rgba(26, 16, 39, 0.9));
+  overflow: hidden;
+}
+
+.journey-sun {
+  position: absolute;
+  top: 28px;
+  right: 34px;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff7ba 0%, #ffe37c 36%, #ffb25c 70%, rgba(255, 178, 92, 0) 72%);
+  box-shadow: 0 0 60px rgba(255, 223, 127, 0.7);
+}
+
+.journey-road {
+  position: absolute;
+  inset: 22px 54px 22px 54px;
+}
+
+.journey-road::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(18, 12, 25, 0.98), rgba(15, 10, 20, 0.92));
+  clip-path: polygon(46% 0, 54% 0, 68% 100%, 32% 100%);
+}
+
+.journey-road-center {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  transform: translateX(-50%);
+  background: repeating-linear-gradient(180deg, rgba(255, 223, 127, 0.9) 0 24px, transparent 24px 48px);
+  opacity: 0.65;
+}
+
+.journey-bike {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 223, 127, 0.24);
+  background: rgba(20, 12, 26, 0.88);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.36);
+  transition: top 380ms ease;
+}
+
+.journey-bike span {
+  font-size: 1.8rem;
+  filter: drop-shadow(0 0 16px rgba(255, 223, 127, 0.32));
+}
+
+.journey-board,
+.sunset-panel {
+  margin-top: 20px;
+  padding: 28px;
+  background: linear-gradient(180deg, rgba(29, 16, 39, 0.9), rgba(18, 10, 25, 0.96));
+}
+
+.journey-track {
+  position: relative;
+  display: grid;
+  gap: 24px;
+}
+
+.journey-track::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 4px;
+  transform: translateX(-50%);
+  background: linear-gradient(180deg, rgba(255, 223, 127, 0.5), rgba(255, 178, 92, 0.18));
+  opacity: 0.7;
+}
+
+.journey-stop {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 92px minmax(0, 1fr);
+  align-items: center;
+  gap: 0;
+}
+
+.journey-stop-card {
+  position: relative;
+  width: min(100%, 460px);
+  padding: 22px;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 223, 127, 0.16);
+  background:
+    radial-gradient(circle at top right, rgba(255, 223, 127, 0.08), transparent 30%),
+    linear-gradient(180deg, rgba(40, 24, 54, 0.98), rgba(23, 12, 32, 0.95));
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.28);
+}
+
+.journey-stop-card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 8px;
+}
+
+.journey-stop-card-active {
+  border-color: rgba(255, 223, 127, 0.42);
+  box-shadow:
+    0 0 0 1px rgba(255, 223, 127, 0.1),
+    0 24px 56px rgba(0, 0, 0, 0.32);
+}
+
+.journey-stop-card-clickable {
+  cursor: pointer;
+}
+
+.journey-stop-card-clickable:hover {
+  transform: translateY(-1px);
+  transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+}
+
+.journey-stop-left .journey-stop-card {
+  justify-self: end;
+}
+
+.journey-stop-right .journey-stop-card {
+  justify-self: start;
+}
+
+.journey-spine {
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+
+.journey-spine-year {
+  position: relative;
+  z-index: 1;
+  width: 56px;
+  height: 56px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 223, 127, 0.24);
+  background: rgba(24, 12, 25, 0.96);
+  color: var(--accent-2);
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 0.86rem;
+  letter-spacing: 0.08em;
+  box-shadow: 0 0 0 6px rgba(255, 223, 127, 0.08);
+}
+
+.journey-stop-left .journey-spine-year::after,
+.journey-stop-right .journey-spine-year::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 36px;
+  height: 2px;
+  background: rgba(255, 223, 127, 0.28);
+}
+
+.journey-stop-left .journey-spine-year::after {
+  right: 100%;
+}
+
+.journey-stop-right .journey-spine-year::after {
+  left: 100%;
+}
+
+.journey-reward {
+  margin-top: 14px;
+  padding: 12px 14px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 223, 127, 0.14);
+  background: rgba(255, 255, 255, 0.04);
+  display: grid;
+  gap: 4px;
+}
+
+.journey-reward span {
+  font-weight: 700;
+}
+
+.journey-reward small {
+  color: var(--muted);
+}
+
+.journey-reward-complete {
+  background: rgba(255, 223, 127, 0.06);
+}
+
+.journey-stop-actions {
+  margin-top: 14px;
+  display: grid;
+  gap: 10px;
+}
+
+.journey-stop-hint {
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.playable-lab-teaser {
+  margin-top: 20px;
+  padding: 28px;
+}
+
+.playable-lab-grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: minmax(0, 1.2fr) minmax(240px, 0.8fr);
+  align-items: center;
+}
+
+.playable-lab-actions,
+.sunset-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.sunset-layout {
+  display: grid;
+  gap: 18px;
+}
+
+.journey-runner-page {
+  --runner-bg: rgba(12, 10, 24, 0.88);
+  --runner-panel: rgba(26, 18, 40, 0.92);
+  --runner-glow: rgba(255, 220, 122, 0.2);
+  --runner-road: #25192f;
+  --runner-road-line: #f6d88a;
+  --runner-text: #fff5e8;
+  --runner-muted: #e5c7a8;
+  --runner-accent: #ffbc62;
+  --runner-border: rgba(255, 219, 142, 0.16);
+  color: var(--runner-text);
+}
+
+.journey-runner-page::before {
+  background:
+    radial-gradient(circle at 50% 12%, rgba(255, 227, 134, 0.32), transparent 14%),
+    radial-gradient(circle at 84% 18%, rgba(255, 188, 98, 0.18), transparent 22%),
+    linear-gradient(180deg, #11081b 0%, #1a1330 42%, #302446 72%, #f19c54 100%);
+}
+
+.journey-runner-page .nav {
+  background: rgba(18, 11, 26, 0.88);
+  border-color: rgba(255, 219, 142, 0.16);
+}
+
+.runner-hero,
+.runner-stage,
+.runner-summary {
+  position: relative;
+  overflow: hidden;
+  margin-top: 20px;
+  padding: 28px;
+  background: linear-gradient(180deg, rgba(23, 14, 34, 0.92), rgba(16, 10, 25, 0.96));
+}
+
+.runner-hero::after,
+.runner-stage::after,
+.runner-summary::after {
+  content: '';
+  position: absolute;
+  inset: 14px;
+  border: 1px solid rgba(255, 219, 142, 0.08);
+  border-radius: 22px;
+  pointer-events: none;
+}
+
+.runner-hero-layout {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+  align-items: start;
+}
+
+.runner-hero-copy {
+  gap: 18px;
+}
+
+.runner-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.runner-hud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.runner-status,
+.runner-badge {
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 219, 142, 0.16);
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.runner-status-running {
+  color: #9ef2b0;
+}
+
+.runner-status-won {
+  color: #ffe89b;
+}
+
+.runner-status-lost {
+  color: #ffb4a1;
+}
+
+.runner-instructions {
+  display: grid;
+  gap: 12px;
+  align-content: center;
+  min-height: 100%;
+  padding: 20px;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 219, 142, 0.14);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.runner-instructions p,
+.runner-instructions li,
+.runner-summary p {
+  color: var(--runner-muted);
+  line-height: 1.7;
+}
+
+.runner-instructions ul {
+  margin: 0;
+  padding-left: 20px;
+  display: grid;
+  gap: 8px;
+}
+
+.runner-stage {
+  padding-bottom: 22px;
+}
+
+.runner-scene {
+  position: relative;
+  min-height: 460px;
+  overflow: hidden;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 219, 142, 0.14);
+  background: linear-gradient(180deg, rgba(18, 10, 28, 0.92), rgba(11, 7, 16, 0.98));
+}
+
+.runner-background {
+  position: absolute;
+  inset: 0;
+  background-image: url('/media/lab/backgroundcity.png');
+  background-repeat: repeat-x;
+  background-position: 0 bottom;
+  background-size: auto 100%;
+  opacity: 0.9;
+  filter: saturate(1.1) contrast(0.95);
+}
+
+.runner-sky-glow {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 52% 20%, rgba(255, 225, 127, 0.28), transparent 16%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 38%);
+  pointer-events: none;
+}
+
+.runner-world {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100000px;
+  height: 100%;
+  transform: translateX(0);
+  will-change: transform;
+}
+
+.runner-overlay-ui {
+  position: absolute;
+  inset: 0;
+  z-index: 8;
+  pointer-events: none;
+}
+
+.runner-score-overlay {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  pointer-events: auto;
+}
+
+.runner-score-overlay .runner-status,
+.runner-score-overlay .runner-badge {
+  background: rgba(11, 7, 20, 0.72);
+  border-color: rgba(255, 219, 142, 0.28);
+  backdrop-filter: blur(6px);
+}
+
+.runner-jump-overlay {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  min-height: 56px;
+  min-width: 108px;
+  border-radius: 999px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.32);
+  pointer-events: auto;
+}
+
+.runner-ending-overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  text-align: center;
+  font-size: clamp(1.2rem, 2.7vw, 2rem);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #fff6e8;
+  background: radial-gradient(circle at center, rgba(8, 5, 14, 0.72), rgba(8, 5, 14, 0.82));
+  text-shadow: 0 0 16px rgba(255, 225, 127, 0.22);
+  pointer-events: none;
+}
+
+.runner-ending-overlay-lost {
+  background: radial-gradient(circle at center, rgba(32, 8, 8, 0.74), rgba(18, 6, 6, 0.84));
+  text-shadow: 0 0 14px rgba(255, 148, 136, 0.28);
+}
+
+.runner-road {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 2px;
+  height: 122px;
+  background:
+    linear-gradient(180deg, rgba(47, 31, 54, 0.95), rgba(28, 18, 37, 0.98)),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.02) 0 36px, transparent 36px 84px);
+  border-top: 1px solid rgba(255, 219, 142, 0.1);
+  box-shadow: inset 0 8px 24px rgba(0, 0, 0, 0.22);
+}
+
+.runner-road::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 4px;
+  transform: translateY(-50%);
+  background: repeating-linear-gradient(90deg, var(--runner-road-line) 0 34px, transparent 34px 68px);
+  opacity: 0.7;
+}
+
+.runner-hazard {
+  position: absolute;
+  display: grid;
+  place-items: end center;
+  pointer-events: none;
+}
+
+.runner-hazard img {
+  width: 100%;
+  height: auto;
+  max-height: 54px;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.35));
+  image-rendering: pixelated;
+  user-select: none;
+}
+
+.runner-pickup {
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 219, 142, 0.28);
+  background: rgba(20, 12, 26, 0.9);
+  box-shadow: 0 0 0 8px rgba(255, 219, 142, 0.08);
+}
+
+.runner-pickup span {
+  font-size: 1.5rem;
+}
+
+.runner-pickup-knowledge {
+  color: #9de7ff;
+}
+
+.runner-pickup-tools {
+  color: #8ef2aa;
+}
+
+.runner-pickup-people {
+  color: #ffd07f;
+}
+
+.runner-pickup-collected {
+  opacity: 0.2;
+  transform: scale(0.8);
+}
+
+.runner-sun {
+  position: absolute;
+  bottom: 190px;
+  width: 112px;
+  height: 112px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle, #fff9cd 0%, #ffe27d 38%, #ffb25c 72%, rgba(255, 178, 92, 0) 74%);
+  box-shadow: 0 0 70px rgba(255, 223, 127, 0.72);
+}
+
+.runner-sun span {
+  font-size: 2.25rem;
+  color: rgba(20, 12, 26, 0.9);
+}
+
+.runner-bike {
+  position: absolute;
+  width: 176px;
+  height: 112px;
+  transform-origin: center bottom;
+  filter: drop-shadow(0 14px 20px rgba(0, 0, 0, 0.34));
+  transition: filter 180ms ease;
+}
+
+.runner-bike img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  user-select: none;
+  pointer-events: none;
+}
+
+.runner-bike-jumping {
+  filter: drop-shadow(0 18px 22px rgba(0, 0, 0, 0.42));
+}
+
+
+.runner-progress {
+  margin-top: 14px;
+  display: grid;
+  gap: 8px;
+}
+
+.runner-progress-track {
+  width: 100%;
+  height: 10px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 219, 142, 0.12);
+}
+
+.runner-progress-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #8ef2aa 0%, #ffe27d 55%, #ffb25c 100%);
+}
+
+.runner-progress-labels {
+  display: flex;
+  justify-content: space-between;
+  color: var(--runner-muted);
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 0.76rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.runner-summary-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.runner-summary-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+@media (max-width: 980px) {
+  .runner-hero,
+  .runner-stage,
+  .runner-summary {
+    padding: 22px;
+  }
+
+  .runner-hero-layout,
+  .runner-summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .runner-scene {
+    min-height: 380px;
+  }
+}
+
+@media (max-width: 720px) {
+  .runner-bike {
+    width: 146px;
+    height: 92px;
+  }
+
+  .runner-sun {
+    width: 88px;
+    height: 88px;
+  }
+
+  .runner-progress-labels {
+    font-size: 0.68rem;
+  }
+
+  .runner-scene {
+    min-height: 340px;
+  }
+
+  .runner-score-overlay {
+    top: 10px;
+    max-width: calc(100% - 20px);
+  }
+
+  .runner-jump-overlay {
+    right: 10px;
+    bottom: 10px;
+    min-height: 60px;
+    min-width: 120px;
+    font-size: 1rem;
+  }
+}
+
+.runner-controls {
+  margin-top: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+@media (max-width: 980px) {
+  .motorcycle-hero,
+  .journey-board,
+  .sunset-panel,
+  .playable-lab-teaser {
+    padding: 22px;
+  }
+
+  .playable-lab-grid,
+  .motorcycle-hero-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .journey-stop {
+    grid-template-columns: 1fr 72px 1fr;
+  }
+
+  .journey-stop-card {
+    width: min(100%, 100%);
+  }
+}
+
+@media (max-width: 720px) {
+  .journey-track::before {
+    left: 26px;
+    transform: none;
+  }
+
+  .journey-stop {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .journey-stop-left .journey-stop-card,
+  .journey-stop-right .journey-stop-card {
+    justify-self: stretch;
+  }
+
+  .journey-spine {
+    display: none;
+  }
+
+  .journey-stop-card {
+    width: 100%;
+  }
+
+  .journey-road {
+    inset: 22px 24px 22px 24px;
+  }
+
+  .journey-sun {
+    width: 88px;
+    height: 88px;
+    right: 12px;
+    top: 18px;
+  }
+}

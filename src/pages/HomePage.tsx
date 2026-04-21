@@ -1,6 +1,7 @@
 import { CaseStudyCard } from '../components/CaseStudyCard';
 import { NavBar } from '../components/NavBar';
 import { softwareCaseStudies } from '../data';
+import '../styles/software.css';
 
 interface HomePageProps {
   onNavigateGame: () => void;
@@ -8,7 +9,7 @@ interface HomePageProps {
 
 export function HomePage({ onNavigateGame }: HomePageProps) {
   return (
-    <main className="page">
+    <main className="page software-page">
       <div className="backdrop backdrop-one" />
       <div className="backdrop backdrop-two" />
 
@@ -25,8 +26,11 @@ export function HomePage({ onNavigateGame }: HomePageProps) {
       <section className="hero panel">
         <div className="hero-layout">
           <div className="hero-copy">
-            <p className="eyebrow">Software engineer and game dev</p>
-            <h1>Hello, I'm Megan and I build software tools.</h1>
+            <p className="eyebrow">Software engineering portfolio</p>
+            <h1>The Digital Architect</h1>
+            <p className="hero-text">
+              Structure, performance, and clean data visualization shaped like a blueprint editor and tuned for technical depth.
+            </p>
 
             <div className="hero-actions">
               <a className="button button-dark" href="#projects">
@@ -62,17 +66,17 @@ export function HomePage({ onNavigateGame }: HomePageProps) {
       <section className="panel about-panel" id="about">
         <div className="section-heading">
           <p className="eyebrow">About</p>
-          <h2>How this portfolio is organized</h2>
+          <h2>How the architecture is organized</h2>
         </div>
         <div className="about-grid">
           <p>
-            The main flow focuses on software engineering case studies. Game development is intentionally nested behind a
-            click so it feels like a discovery path instead of a competing homepage narrative.
+            The main flow focuses on software engineering case studies. The layout stays modular and precise so projects read
+            like structural systems rather than decorative cards.
           </p>
           <ul>
-            <li>Public and confidential work framed with safe detail levels</li>
-            <li>Clear role, challenge, and outcome for each project</li>
-            <li>Media placeholders ready for your screenshots and GIFs</li>
+            <li>Blue-toned surfaces with subtle glow and strong legibility</li>
+            <li>Case studies framed as reusable structural modules</li>
+            <li>Reserved space for metrics, screenshots, and technical context</li>
           </ul>
         </div>
       </section>
