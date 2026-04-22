@@ -1,14 +1,14 @@
 import { GameCard } from '../components/GameCard';
+import { MotorcycleJourneyLab } from '../components/MotorcycleJourneyLab';
 import { NavBar } from '../components/NavBar';
 import { gameJourney } from '../data';
 import '../styles/game.css';
 
 interface GamePageProps {
   onNavigateHome: () => void;
-  onNavigateLab: () => void;
 }
 
-export function GamePage({ onNavigateHome, onNavigateLab }: GamePageProps) {
+export function GamePage({ onNavigateHome }: GamePageProps) {
   return (
     <main className="page game-page">
       <div className="backdrop backdrop-one" />
@@ -87,20 +87,7 @@ export function GamePage({ onNavigateHome, onNavigateLab }: GamePageProps) {
           <p className="eyebrow">Playable lab</p>
           <h2>Motorcycle journey minigame</h2>
         </div>
-        <div className="playable-lab-grid">
-          <p>
-            The lab is moving into its own page for now. It&apos;s a personal road-trip about riding a motorcycle through
-            the unknown, gathering knowledge, skills, and people, and then heading into the sun.
-          </p>
-          <div className="playable-lab-actions">
-            <button className="button button-dark" type="button" onClick={onNavigateLab}>
-              Open motorcycle journey
-            </button>
-            <a className="button button-light" href="#timeline">
-              Back to game projects
-            </a>
-          </div>
-        </div>
+        <MotorcycleJourneyLab />
       </section>
 
       <section className="panel contact-panel" id="contact-game">
@@ -108,10 +95,35 @@ export function GamePage({ onNavigateHome, onNavigateLab }: GamePageProps) {
           <p className="eyebrow">Contact</p>
           <h2>Let&apos;s collaborate on game projects</h2>
         </div>
-        <p>
-          Add your preferred contact channels here for studios, collaborators, and jam teams. You can include links to
-          itch.io, GitHub, LinkedIn, and your email, plus a short note on availability for freelance or junior roles.
-        </p>
+        <div className="contact-stack">
+          <div className="contact-item">
+            <span className="contact-label">Email</span>
+            <a className="contact-value" href="mailto:megan160202@gmail.com">
+              megan160202@gmail.com
+            </a>
+          </div>
+
+          <div className="contact-item">
+            <span className="contact-label">Location</span>
+            <span className="contact-value">Mönchengladbach, NRW, Germany</span>
+          </div>
+
+          <div className="contact-item">
+            <span className="contact-label">LinkedIn</span>
+            <a
+              className="contact-linkedin"
+              href="https://www.linkedin.com/in/megan-spielberg-b42475239"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Open Megan Spielberg LinkedIn profile"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.1 1 2.48 1h.02C3.87 1 4.98 2.12 4.98 3.5zM.5 8h4V23h-4V8zm7.5 0h3.83v2.05h.05c.53-1.01 1.84-2.08 3.79-2.08 4.05 0 4.8 2.66 4.8 6.11V23h-4v-7.88c0-1.88-.03-4.29-2.61-4.29-2.62 0-3.02 2.05-3.02 4.16V23h-4V8z" />
+              </svg>
+              <span>linkedin.com/in/megan-spielberg-b42475239</span>
+            </a>
+          </div>
+        </div>
       </section>
     </main>
   );

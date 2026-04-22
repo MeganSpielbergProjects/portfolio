@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { MediaItem } from '../types';
 
 interface MediaCarouselProps {
@@ -8,6 +8,7 @@ interface MediaCarouselProps {
 
 export function MediaCarousel({ items, projectTitle }: MediaCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
 
   const goToPrevious = () => {
     setCurrentIndex((prevIndex) => (prevIndex === 0 ? items.length - 1 : prevIndex - 1));
@@ -21,6 +22,26 @@ export function MediaCarousel({ items, projectTitle }: MediaCarouselProps) {
   const isVideo = currentItem.type === 'video';
   const isYouTube = currentItem.type === 'youtube';
   const isPdf = currentItem.type === 'pdf';
+  const isImage = !isVideo && !isYouTube && !isPdf;
+
+  useEffect(() => {
+    setIsLightboxOpen(false);
+  }, [currentIndex]);
+
+  useEffect(() => {
+    if (!isLightboxOpen) {
+      return;
+    }
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setIsLightboxOpen(false);
+      }
+    };
+
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [isLightboxOpen]);
 
   return (
     <div className="media-carousel">
@@ -58,9 +79,11 @@ export function MediaCarousel({ items, projectTitle }: MediaCarouselProps) {
           <img
             src={currentItem.src}
             alt={currentItem.alt}
+            className="carousel-image-default"
             onError={(event) => {
               event.currentTarget.style.display = 'none';
             }}
+            onClick={() => setIsLightboxOpen(true)}
           />
         )}
       </div>
@@ -78,6 +101,15 @@ export function MediaCarousel({ items, projectTitle }: MediaCarouselProps) {
 
         <div className="carousel-info">
           {currentItem.caption && <span className="image-caption">{currentItem.caption}</span>}
+          {isImage ? (
+            <button
+              type="button"
+              className="carousel-zoom-toggle"
+              onClick={() => setIsLightboxOpen(true)}
+            >
+              View large
+            </button>
+          ) : null}
           <span className="carousel-counter">
             {currentIndex + 1} / {items.length}
           </span>
@@ -93,6 +125,29 @@ export function MediaCarousel({ items, projectTitle }: MediaCarouselProps) {
           →
         </button>
       </div>
+
+      {isImage && isLightboxOpen ? (
+        <div
+          className="carousel-lightbox"
+          role="dialog"
+          aria-modal="true"
+          aria-label={`Large view for ${projectTitle}`}
+          onClick={() => setIsLightboxOpen(false)}
+        >
+          <div className="carousel-lightbox-frame" onClick={(event) => event.stopPropagation()}>
+            <button
+              type="button"
+              className="carousel-lightbox-close"
+              onClick={() => setIsLightboxOpen(false)}
+              aria-label="Close large image view"
+            >
+              Close
+            </button>
+            <img src={currentItem.src} alt={currentItem.alt} className="carousel-lightbox-image" />
+            {currentItem.caption ? <p className="carousel-lightbox-caption">{currentItem.caption}</p> : null}
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 }

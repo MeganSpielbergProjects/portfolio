@@ -16,6 +16,8 @@ export type CaseStudy = {
   mediaPlaceholder: string;
   projectUrl?: string;
   githubUrl?: string;
+  imagePath?: string;
+  imageCaption?: string;
   mediaItems?: MediaItem[];
 };
 

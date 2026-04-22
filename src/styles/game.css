@@ -277,6 +277,43 @@
   background: linear-gradient(180deg, rgba(47, 28, 15, 0.92), rgba(25, 15, 8, 0.96));
 }
 
+.game-page .playable-lab-teaser {
+  background:
+    linear-gradient(180deg, rgba(52, 30, 16, 0.92), rgba(27, 16, 10, 0.95)),
+    radial-gradient(circle at top left, rgba(129, 255, 137, 0.08), transparent 28%);
+}
+
+.game-page .playable-lab-teaser .journey-runner-page {
+  display: grid;
+  gap: 14px;
+  margin-top: 6px;
+}
+
+.game-page .playable-lab-teaser .runner-hero,
+.game-page .playable-lab-teaser .runner-stage {
+  margin-top: 0;
+  padding: 18px;
+  border: 1px solid rgba(255, 198, 102, 0.16);
+  border-radius: 22px;
+  background: rgba(16, 10, 24, 0.56);
+  box-shadow:
+    0 14px 36px rgba(0, 0, 0, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+.game-page .playable-lab-teaser .runner-hero::after,
+.game-page .playable-lab-teaser .runner-stage::after {
+  display: none;
+}
+
+.game-page .playable-lab-teaser .runner-instructions {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.game-page .playable-lab-teaser .runner-stage {
+  padding-bottom: 16px;
+}
+
 @media (max-width: 980px) {
   .game-page .hero-visual {
     min-height: 260px;
@@ -309,5 +346,10 @@
     left: 18px;
     transform: translateX(-50%);
     top: 18px;
+  }
+
+  .game-page .playable-lab-teaser .runner-hero,
+  .game-page .playable-lab-teaser .runner-stage {
+    padding: 16px;
   }
 }

@@ -2,13 +2,17 @@ import { CaseStudy, GameProject } from './types';
 
 const ascherwaldTitle = '/media/ascherwald_logo.png';
 const catsAgainstDarknessTitle = '/media/cats_against_darkness_logo.png';
+const shareplateLogo = '/media/shareplate_logo2.png';
+const shareplateDemo = '/media/shareplate_demo.png';
 const scalySanctuaryLogo = '/media/scaly_sanctuary_logo.png';
 const scalySanctuaryGameLoop = '/media/scaly_sanctuary_game_loop.png';
 const scalySanctuaryPreparingSoil = '/media/scaly_sanctuary_preparing_soil.mp4';
+const myHabitLogo = '/media/myhabit_logo.png';
 const fossilCameraPrototypes = '/media/fossil_camera_prototypes.png';
 const insectDetectionPipeline = '/media/insect_detection_pipeline.png';
 const insectDetectionResults = '/media/insect_detection_results.png';
 const myHabitBannerPdf = '/MyHabitBanner.pdf';
+const shareplatePoster = '/media/shareplate_poster.png';
 
 export const softwareCaseStudies: CaseStudy[] = [
   {
@@ -20,6 +24,22 @@ export const softwareCaseStudies: CaseStudy[] = [
     outcome:
       'Delivered a native iOS app prototype that framed food sharing as a simple, community-first interaction.',
     stack: ['iOS native', 'Team collaboration', 'University project'],
+    imagePath: shareplateLogo,
+    imageCaption: 'SharePlate project logo and banner.',
+    mediaItems: [
+      {
+        src: shareplateDemo,
+        alt: 'SharePlate iOS app demo screens',
+        caption: 'SharePlate mobile app flow showing home feed and map view.',
+        type: 'image',
+      },
+      {
+        src: shareplatePoster,
+        alt: 'SharePlate project poster',
+        caption: 'SharePlate project poster.',
+        type: 'image',
+      }
+    ],
     mediaPlaceholder: 'Add app screenshots, core flow GIF, and architecture sketch.',
   },
   {
@@ -93,6 +113,8 @@ export const gameJourney: GameProject[] = [
     tools: ['Godot', 'Game design', 'Research project'],
     details:
       'Developing a learning-focused game that teaches proper reptile care, plus a dedicated studio website around the project.',
+    imagePath: scalySanctuaryLogo,
+    imageCaption: 'Scaly Sanctuary logo and visual identity.',
     mediaItems: [
       {
         src: scalySanctuaryLogo,
@@ -141,6 +163,8 @@ export const gameJourney: GameProject[] = [
     tools: ['GDevelop', 'n8n', 'Baserow'],
     details:
       'Built a no-code game for a client who wanted players to learn about mental health and reinforce healthier habits.',
+    imagePath: myHabitLogo,
+    imageCaption: 'MyHabit pixel-art title logo.',
     mediaItems: [
       {
         src: 'https://www.youtube.com/embed/9l4GjBcOcbI',

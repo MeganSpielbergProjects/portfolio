@@ -136,7 +136,12 @@
 }
 
 .software-page .projects-grid {
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.software-page .projects-grid .thumbnail-placeholder {
+  min-height: 220px;
 }
 
 .software-page .project-card {
@@ -200,5 +205,20 @@
 @media (max-width: 980px) {
   .software-page .hero-visual {
     min-height: 260px;
+  }
+
+  .software-page .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .software-page .projects-grid .thumbnail-placeholder {
+    min-height: 190px;
+  }
+}
+
+@media (max-width: 640px) {
+  .software-page .projects-grid .thumbnail-placeholder {
+    min-height: 170px;
   }
 }

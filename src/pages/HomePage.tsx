@@ -47,12 +47,8 @@ export function HomePage({ onNavigateGame }: HomePageProps) {
                 <span>software projects</span>
               </article>
               <article>
-                <strong>3</strong>
+                <strong>4</strong>
                 <span>game-dev milestones</span>
-              </article>
-              <article>
-                <strong>1</strong>
-                <span>dedicated game page</span>
               </article>
             </div>
           </div>
@@ -97,12 +93,37 @@ export function HomePage({ onNavigateGame }: HomePageProps) {
       <section className="panel contact-panel" id="contact">
         <div className="section-heading">
           <p className="eyebrow">Contact</p>
-          <h2>Next step</h2>
+          <h2>Let's work together</h2>
         </div>
-        <p>
-          Add GitHub, LinkedIn, and email here. also place a button to CV and a short availability
-          note for internships or junior roles.
-        </p>
+        <div className="contact-stack">
+          <div className="contact-item">
+            <span className="contact-label">Email</span>
+            <a className="contact-value" href="mailto:megan160202@gmail.com">
+              megan160202@gmail.com
+            </a>
+          </div>
+
+          <div className="contact-item">
+            <span className="contact-label">Location</span>
+            <span className="contact-value">Mönchengladbach, NRW, Germany</span>
+          </div>
+
+          <div className="contact-item">
+            <span className="contact-label">LinkedIn</span>
+            <a
+              className="contact-linkedin"
+              href="https://www.linkedin.com/in/megan-spielberg-b42475239"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Open Megan Spielberg LinkedIn profile"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.1 1 2.48 1h.02C3.87 1 4.98 2.12 4.98 3.5zM.5 8h4V23h-4V8zm7.5 0h3.83v2.05h.05c.53-1.01 1.84-2.08 3.79-2.08 4.05 0 4.8 2.66 4.8 6.11V23h-4v-7.88c0-1.88-.03-4.29-2.61-4.29-2.62 0-3.02 2.05-3.02 4.16V23h-4V8z" />
+              </svg>
+              <span>linkedin.com/in/megan-spielberg-b42475239</span>
+            </a>
+          </div>
+        </div>
       </section>
     </main>
   );

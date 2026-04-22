@@ -1,5 +1,4 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { NavBar } from '../components/NavBar';
 import '../styles/motorcycle.css';
 
 type RewardKey = 'knowledge' | 'tools' | 'people';
@@ -61,11 +60,6 @@ const initialInventory: Record<RewardKey, number> = {
   tools: 0,
   people: 0,
 };
-
-interface MotorcycleJourneyPageProps {
-  onNavigateHome: () => void;
-  onNavigateGame: () => void;
-}
 
 function rewardLabel(reward: RewardKey) {
   if (reward === 'knowledge') {
@@ -172,7 +166,7 @@ function nextSpawnX(baseSpawnX: number, minGap: number, entities: Array<{ x: num
   return Math.max(baseSpawnX, farthestX + minGap);
 }
 
-export function MotorcycleJourneyPage({ onNavigateHome, onNavigateGame }: MotorcycleJourneyPageProps) {
+export function MotorcycleJourneyLab() {
   const gameRef = useRef<GameSnapshot>(createInitialSnapshot());
   const pickupQueueRef = useRef<Pickup[]>(createPickupQueue());
   const hazardQueueRef = useRef<Hazard[]>(createHazardQueue());
@@ -247,15 +241,18 @@ export function MotorcycleJourneyPage({ onNavigateHome, onNavigateGame }: Motorc
 
       if (game.status === 'running') {
         pickupQueueRef.current.forEach((pickup) => {
-        if (game.collected[pickup.id]) {
-          return;
-        }
+          if (game.collected[pickup.id]) {
+            return;
+          }
 
-        const isCollected = Math.abs(bikeCenterX - pickup.x) < PICKUP_RADIUS_X && Math.abs(bikeBottom - pickup.y) < PICKUP_RADIUS_Y;
-        if (isCollected) {
-          game.collected[pickup.id] = true;
-          game.inventory[pickup.reward] += 1;
-        }
+          const isCollected =
+            Math.abs(bikeCenterX - pickup.x) < PICKUP_RADIUS_X &&
+            Math.abs(bikeBottom - pickup.y) < PICKUP_RADIUS_Y;
+
+          if (isCollected) {
+            game.collected[pickup.id] = true;
+            game.inventory[pickup.reward] += 1;
+          }
         });
       }
 
@@ -265,33 +262,25 @@ export function MotorcycleJourneyPage({ onNavigateHome, onNavigateGame }: Motorc
         pickupQueueRef.current.forEach((pickup, index) => {
           if (pickup.x < game.cameraX - RESPAWN_BUFFER) {
             const rewardTypes: RewardKey[] = ['knowledge', 'tools', 'people'];
-            const missingRewards = rewardTypes.filter(
-              (reward) => game.inventory[reward] < REQUIRED_COUNT,
-            );
+            const missingRewards = rewardTypes.filter((reward) => game.inventory[reward] < REQUIRED_COUNT);
             const reward = randomReward(missingRewards);
-            const baseSpawnX = game.cameraX + Math.max(viewportWidth * 2, SPAWN_AHEAD_DISTANCE) + Math.random() * 420;
+            const baseSpawnX =
+              game.cameraX + Math.max(viewportWidth * 2, SPAWN_AHEAD_DISTANCE) + Math.random() * 420;
             const spawnX = nextSpawnX(baseSpawnX, MIN_PICKUP_GAP, pickupQueueRef.current, index);
 
-            pickupQueueRef.current[index] = createPickup(
-              `${reward}-${Date.now()}-${index}`,
-              spawnX,
-              reward,
-            );
+            pickupQueueRef.current[index] = createPickup(`${reward}-${Date.now()}-${index}`, spawnX, reward);
           }
         });
 
         hazardQueueRef.current.forEach((hazard, index) => {
           if (hazard.x < game.cameraX - RESPAWN_BUFFER) {
-            const baseSpawnX = game.cameraX + Math.max(viewportWidth * 2.4, SPAWN_AHEAD_DISTANCE + 280) + Math.random() * 520;
+            const baseSpawnX =
+              game.cameraX + Math.max(viewportWidth * 2.4, SPAWN_AHEAD_DISTANCE + 280) + Math.random() * 520;
             const spawnX = nextSpawnX(baseSpawnX, MIN_HAZARD_GAP, hazardQueueRef.current, index);
 
-            hazardQueueRef.current[index] = createHazard(
-              `hazard-${Date.now()}-${index}`,
-              spawnX,
-            );
+            hazardQueueRef.current[index] = createHazard(`hazard-${Date.now()}-${index}`, spawnX);
           }
         });
-
       }
 
       if (game.status === 'running') {
@@ -315,7 +304,9 @@ export function MotorcycleJourneyPage({ onNavigateHome, onNavigateGame }: Motorc
       }
 
       const hasRequiredCounts =
-        game.inventory.knowledge >= REQUIRED_COUNT && game.inventory.tools >= REQUIRED_COUNT && game.inventory.people >= REQUIRED_COUNT;
+        game.inventory.knowledge >= REQUIRED_COUNT &&
+        game.inventory.tools >= REQUIRED_COUNT &&
+        game.inventory.people >= REQUIRED_COUNT;
 
       if (hasRequiredCounts && game.status === 'running') {
         game.status = 'ending';
@@ -353,6 +344,18 @@ export function MotorcycleJourneyPage({ onNavigateHome, onNavigateGame }: Motorc
     };
   }, [snapshot.status, viewportWidth]);
 
+  const jump = () => {
+    const game = gameRef.current;
+
+    if (game.status !== 'running' || game.bikeY > 0) {
+      return;
+    }
+
+    game.bikeVy = JUMP_VELOCITY;
+    game.bikeAngle = -45;
+    syncSnapshot();
+  };
+
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key !== ' ' && event.key !== 'ArrowUp') {
@@ -366,6 +369,23 @@ export function MotorcycleJourneyPage({ onNavigateHome, onNavigateGame }: Motorc
     window.addEventListener('keydown', onKeyDown);
     return () => window.removeEventListener('keydown', onKeyDown);
   }, []);
+
+  const startGame = () => {
+    resetQueues();
+    gameRef.current = {
+      ...createInitialSnapshot(),
+      status: 'running',
+    };
+    lastTimeRef.current = null;
+    syncSnapshot();
+  };
+
+  const restartGame = () => {
+    resetQueues();
+    gameRef.current = createInitialSnapshot();
+    lastTimeRef.current = null;
+    syncSnapshot();
+  };
 
   const inventoryOrder: RewardKey[] = ['knowledge', 'tools', 'people'];
   const jumpReady = snapshot.status === 'running' && snapshot.bikeY === 0;
@@ -397,55 +417,11 @@ export function MotorcycleJourneyPage({ onNavigateHome, onNavigateGame }: Motorc
     return 'Start the ride, jump over obstacles, and collect every signal on the road.';
   }, [activePickup, snapshot.status]);
 
-  const startGame = () => {
-    resetQueues();
-    gameRef.current = {
-      ...createInitialSnapshot(),
-      status: 'running',
-    };
-    lastTimeRef.current = null;
-    syncSnapshot();
-  };
-
-  const restartGame = () => {
-    resetQueues();
-    gameRef.current = createInitialSnapshot();
-    lastTimeRef.current = null;
-    syncSnapshot();
-  };
-
-  const jump = () => {
-    const game = gameRef.current;
-
-    if (game.status !== 'running' || game.bikeY > 0) {
-      return;
-    }
-
-    game.bikeVy = JUMP_VELOCITY;
-    game.bikeAngle = -45;
-    syncSnapshot();
-  };
-
   return (
-    <main className="page journey-runner-page">
-      <div className="backdrop backdrop-one" />
-      <div className="backdrop backdrop-two" />
-
-      <NavBar
-        links={[
-          { label: 'Play', href: '#play' },
-          { label: 'Road', href: '#road' },
-          { label: 'End', href: '#end' },
-        ]}
-        switchChecked
-        onSwitch={onNavigateGame}
-      />
-
-      <section className="panel runner-hero" id="play">
+    <div className="journey-runner-page">
+      <section className="runner-hero">
         <div className="hero-layout runner-hero-layout">
           <div className="hero-copy runner-hero-copy">
-            <p className="eyebrow">Personal playable lab</p>
-            <h1>Ride Into the Sun</h1>
             <p className="hero-text">
               An auto-running motorcycle side scroller. Start the ride, jump over obstacles, collect knowledge, tools,
               and people, then keep rolling until the pack is complete.
@@ -463,7 +439,7 @@ export function MotorcycleJourneyPage({ onNavigateHome, onNavigateGame }: Motorc
         </div>
       </section>
 
-      <section className="panel runner-stage" id="road">
+      <section className="runner-stage">
         <div className="runner-scene">
           <div className="runner-background" style={{ backgroundPositionX: `${-snapshot.cameraX * 0.45}px` }} aria-hidden="true" />
           <div className="runner-sky-glow" aria-hidden="true" />
@@ -560,34 +536,6 @@ export function MotorcycleJourneyPage({ onNavigateHome, onNavigateGame }: Motorc
           </button>
         </div>
       </section>
-
-      <section className="panel runner-summary" id="end">
-        <div className="section-heading">
-          <p className="eyebrow">Route</p>
-          <h2>What the ride is about</h2>
-        </div>
-        <div className="runner-summary-grid">
-          <p>
-            The journey is a small personal runner about momentum. The motorcycle keeps moving, but your jumps decide
-            whether you bring the right things to the finish.
-          </p>
-          <p>
-            Knowledge, tools, and people are collected on the road. When the pack is complete, the final ride into the sun
-            becomes the ending.
-          </p>
-        </div>
-        <div className="runner-summary-actions">
-          <button className="button button-dark" type="button" onClick={startGame}>
-            Play again
-          </button>
-          <button className="button button-light" type="button" onClick={onNavigateGame}>
-            Back to game portfolio
-          </button>
-          <button className="button button-light" type="button" onClick={onNavigateHome}>
-            Back to software portfolio
-          </button>
-        </div>
-      </section>
-    </main>
+    </div>
   );
 }

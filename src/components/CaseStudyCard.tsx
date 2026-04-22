@@ -112,9 +112,15 @@ export function CaseStudyCard({ project }: CaseStudyCardProps) {
   return (
     <article className="project-card">
       <button className="preview-card" type="button" onClick={() => setIsOpen(true)} aria-haspopup="dialog">
-        <div className="thumbnail-placeholder" aria-hidden="true">
-          <span>Thumbnail</span>
-        </div>
+        {project.imagePath ? (
+          <div className="thumbnail-placeholder preview-thumbnail-with-image">
+            <img className="preview-thumbnail-image" src={project.imagePath} alt={`${project.title} logo`} loading="lazy" />
+          </div>
+        ) : (
+          <div className="thumbnail-placeholder" aria-hidden="true">
+            <span>Thumbnail</span>
+          </div>
+        )}
         <div className="preview-copy">
           <p className="project-kicker">Case study</p>
           <h3>{project.title}</h3>
