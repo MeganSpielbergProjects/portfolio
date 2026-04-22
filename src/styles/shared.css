@@ -1,17 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;700&display=swap');
 
 :root {
-  color-scheme: dark;
-  --bg: #0b1020;
-  --bg-soft: rgba(11, 16, 32, 0.8);
-  --surface: rgba(18, 26, 48, 0.84);
-  --surface-strong: rgba(24, 34, 62, 0.95);
-  --text: #f3f7ff;
-  --muted: #a8b2ce;
-  --accent: #7cf3c5;
-  --accent-2: #ffbf69;
-  --border: rgba(255, 255, 255, 0.1);
-  --shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+  --bg:         #100c08;
+  --surface:    rgba(255,255,255,0.035);
+  --surface-2:  rgba(255,255,255,0.055);
+  --border:     rgba(255,200,100,0.14);
+  --border-2:   rgba(255,200,100,0.26);
+  --text:       #fdf5e8;
+  --muted:      #c4a97a;
+  --amber:      #ffb347;
+  --gold:       #ffd166;
+  --green:      #8fffaa;
+  --shadow:     0 32px 80px rgba(0,0,0,0.55);
+  --r-card:     22px;
+  --r-pill:     999px;
+  --font-display: 'Syne', sans-serif;
+  --font-body:    'DM Sans', sans-serif;
+  --font-mono:    'DM Mono', monospace;
 }
 
 * {
@@ -534,6 +539,7 @@ h2 {
   line-height: 1.45;
   display: -webkit-box;
   -webkit-box-orient: vertical;
+  line-clamp: 1;
   -webkit-line-clamp: 1;
   overflow: hidden;
 }
@@ -577,7 +583,7 @@ h2 {
   display: grid;
   place-items: center;
   overflow-y: auto;
-  background: rgba(3, 6, 12, 0.74);
+  background: rgba(3, 6, 12, 0.86);
   backdrop-filter: blur(8px);
 }
 
@@ -589,7 +595,7 @@ h2 {
   border-radius: 22px;
   border: 1px solid var(--border);
   background: var(--surface-strong);
-  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.52);
+  box-shadow: 0 20px 52px rgba(0, 0, 0, 0.42);
   padding: 22px;
 }
 
@@ -599,6 +605,70 @@ h2 {
   align-items: flex-start;
   gap: 12px;
   margin-bottom: 8px;
+}
+
+.card-overlay-close {
+  color: var(--text);
+  border-color: rgba(255, 255, 255, 0.32);
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+}
+
+.card-overlay-close:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.44);
+}
+
+/* Match overlay tone to the currently visible page. Uses :has because overlays are portaled to body. */
+body:has(.software-page) .card-overlay {
+  background: rgba(4, 10, 22, 0.88);
+  backdrop-filter: blur(9px);
+}
+
+body:has(.software-page) .card-overlay-panel {
+  border-color: rgba(117, 183, 255, 0.24);
+  background: linear-gradient(180deg, rgba(19, 31, 58, 0.97), rgba(11, 19, 38, 0.98));
+  box-shadow: 0 20px 52px rgba(49, 120, 209, 0.2);
+}
+
+body:has(.software-page) .card-overlay-close {
+  border-color: rgba(117, 183, 255, 0.42);
+  background: rgba(117, 183, 255, 0.2);
+  color: #eff7ff;
+}
+
+body:has(.game-page) .card-overlay {
+  background: rgba(10, 7, 4, 0.86);
+  backdrop-filter: blur(9px);
+}
+
+body:has(.game-page) .card-overlay-panel {
+  border-color: rgba(255, 198, 102, 0.24);
+  background: linear-gradient(180deg, rgba(69, 41, 21, 0.98), rgba(33, 19, 11, 0.97));
+  box-shadow: 0 20px 52px rgba(194, 153, 19, 0.3);
+}
+
+body:has(.game-page) .card-overlay-close {
+  border-color: rgba(255, 198, 102, 0.42);
+  background: rgba(255, 198, 102, 0.16);
+  color: #fff4df;
+}
+
+body:has(.motorcycle-page) .card-overlay {
+  background: rgba(12, 7, 18, 0.88);
+  backdrop-filter: blur(9px);
+}
+
+body:has(.motorcycle-page) .card-overlay-panel {
+  border-color: rgba(255, 186, 102, 0.24);
+  background: linear-gradient(180deg, rgba(52, 30, 66, 0.98), rgba(28, 16, 39, 0.98));
+  box-shadow: 0 20px 52px rgba(181, 109, 255, 0.22);
+}
+
+body:has(.motorcycle-page) .card-overlay-close {
+  border-color: rgba(255, 186, 102, 0.42);
+  background: rgba(255, 186, 102, 0.16);
+  color: #fff1df;
 }
 
 .project-kicker {

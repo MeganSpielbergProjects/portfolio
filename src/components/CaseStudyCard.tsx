@@ -58,7 +58,7 @@ export function CaseStudyCard({ project }: CaseStudyCardProps) {
             <p className="project-kicker">Case study</p>
             <h3 id={titleId}>{project.title}</h3>
           </div>
-          <button className="button button-light button-small" type="button" onClick={() => setIsOpen(false)}>
+          <button className="button button-light button-small card-overlay-close" type="button" onClick={() => setIsOpen(false)}>
             Close
           </button>
         </header>

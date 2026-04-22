@@ -419,26 +419,22 @@ export function MotorcycleJourneyLab() {
 
   return (
     <div className="journey-runner-page">
-      <section className="runner-hero">
-        <div className="hero-layout runner-hero-layout">
-          <div className="hero-copy runner-hero-copy">
+      <section className="runner-section">
+        <div className="runner-card" aria-live="polite">
             <p className="hero-text">
-              An auto-running motorcycle side scroller. Start the ride, jump over obstacles, collect knowledge, tools,
-              and people, then keep rolling until the pack is complete.
+            An auto-running motorcycle side scroller. Start the ride, jump over obstacles, collect knowledge, tools, and people, then keep rolling until the pack is complete.          
             </p>
-          </div>
+            
+            {/* Only show status if it exists */}
+            {statusText && <p className="status-text">{statusText}</p>}
 
-          <div className="runner-instructions" aria-live="polite">
-            <p>{statusText}</p>
-            <ul>
-              <li>Automatic movement begins when you press Start.</li>
-              <li>Press Jump or Space to hop over obstacles and collect pickups.</li>
-              <li>Keep going until knowledge, tools, and people all reach 3/3.</li>
+            <ul className="instructions-list">
+            <li>Automatic movement begins when you press Start.</li>
+            <li>Press Jump or Space to hop over obstacles and collect pickups.</li>
+            <li>Keep going until knowledge, tools, and people all reach 3/3.</li>
             </ul>
-          </div>
         </div>
-      </section>
-
+        </section>
       <section className="runner-stage">
         <div className="runner-scene">
           <div className="runner-background" style={{ backgroundPositionX: `${-snapshot.cameraX * 0.45}px` }} aria-hidden="true" />
@@ -545,9 +541,13 @@ export function MotorcycleJourneyLab() {
           <button className="button button-dark" type="button" onClick={startGame}>
             {snapshot.status === 'running' ? 'Restart ride' : 'Start ride'}
           </button>
-          <button className="button button-light" type="button" onClick={restartGame}>
+          <button 
+            className="button button-light button-white" 
+            type="button" 
+            onClick={restartGame}
+            >
             Reset
-          </button>
+            </button>
         </div>
       </section>
     </div>

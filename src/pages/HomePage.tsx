@@ -41,7 +41,7 @@ export function HomePage({ onNavigateGame }: HomePageProps) {
               </button>
             </div>
 
-            <div className="hero-metrics">
+            {/* <div className="hero-metrics">
               <article>
                 <strong>4</strong>
                 <span>software projects</span>
@@ -50,7 +50,7 @@ export function HomePage({ onNavigateGame }: HomePageProps) {
                 <strong>4</strong>
                 <span>game-dev milestones</span>
               </article>
-            </div>
+            </div> */}
           </div>
 
           <div className="hero-visual" aria-hidden="true">

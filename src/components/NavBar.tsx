@@ -15,7 +15,7 @@ export function NavBar({ links, switchChecked, onSwitch }: NavBarProps) {
   return (
     <header className="nav" aria-label="Primary navigation">
       <div className="nav-brand">
-        <span className="nav-title">Megan Portfolio</span>
+        <span className="nav-title">Megan Spielberg</span>
       </div>
 
       <nav className="nav-links" aria-label="Main menu">

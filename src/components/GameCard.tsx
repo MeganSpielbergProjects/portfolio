@@ -60,7 +60,7 @@ export function GameCard({ entry }: GameCardProps) {
             <p className="project-kicker">Journey milestone</p>
             <h3 id={titleId}>{entry.title}</h3>
           </div>
-          <button className="button button-light button-small" type="button" onClick={() => setIsOpen(false)}>
+          <button className="button button-light button-small card-overlay-close" type="button" onClick={() => setIsOpen(false)}>
             Close
           </button>
         </header>

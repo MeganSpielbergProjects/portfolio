@@ -125,6 +125,7 @@
 .software-page .button-light {
   border-color: rgba(117, 183, 255, 0.2);
   background: rgba(117, 183, 255, 0.06);
+  color: #c7e3ff;
 }
 
 .software-page .button-light:hover {
