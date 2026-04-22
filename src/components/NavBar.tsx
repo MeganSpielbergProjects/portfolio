@@ -9,13 +9,23 @@ interface NavBarProps {
   links: NavBarLink[];
   switchChecked: boolean;
   onSwitch: () => void;
+  brandTitle?: string;
+  switchLeftLabel?: string;
+  switchRightLabel?: string;
 }
 
-export function NavBar({ links, switchChecked, onSwitch }: NavBarProps) {
+export function NavBar({
+  links,
+  switchChecked,
+  onSwitch,
+  brandTitle = 'Megan Portfolio',
+  switchLeftLabel = 'Software',
+  switchRightLabel = 'Game',
+}: NavBarProps) {
   return (
     <header className="nav" aria-label="Primary navigation">
       <div className="nav-brand">
-        <span className="nav-title">Megan Portfolio</span>
+        <span className="nav-title">{brandTitle}</span>
       </div>
 
       <nav className="nav-links" aria-label="Main menu">
@@ -46,11 +56,11 @@ export function NavBar({ links, switchChecked, onSwitch }: NavBarProps) {
         aria-label="Switch between software and game pages"
         onClick={onSwitch}
       >
-        <span className="nav-switch-text">Software</span>
+        <span className="nav-switch-text">{switchLeftLabel}</span>
         <span className="nav-switch-track" aria-hidden="true">
           <span className="nav-switch-thumb" />
         </span>
-        <span className="nav-switch-text">Game</span>
+        <span className="nav-switch-text">{switchRightLabel}</span>
       </button>
     </header>
   );

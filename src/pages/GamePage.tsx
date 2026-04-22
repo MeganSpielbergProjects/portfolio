@@ -16,11 +16,14 @@ export function GamePage({ onNavigateHome }: GamePageProps) {
 
       <NavBar
         links={[
-          { label: 'About', href: '#about-game' },
           { label: 'Games', href: '#timeline' },
-          { label: 'Playable Lab', href: '#playable-lab' },
+          { label: 'Approach', href: '#about-game' },
+          { label: 'Play', href: '#playable-lab' },
           { label: 'Contact', href: '#contact-game' },
         ]}
+        brandTitle="Megan Spielberg"
+        switchLeftLabel="SW"
+        switchRightLabel="GD"
         switchChecked
         onSwitch={onNavigateHome}
       />
@@ -29,17 +32,21 @@ export function GamePage({ onNavigateHome }: GamePageProps) {
         <div className="hero-layout">
           <div className="hero-copy">
             <p className="eyebrow">Game development portfolio</p>
-            <h1>The Pixel Journey</h1>
+            <h1 className="hero-title">
+              The <span className="hero-highlight">Pixel</span>
+              <br />
+              Journey
+            </h1>
             <p className="hero-text">
-              A playful overworld map where projects are explored as milestones, with retro color and modern readability.
+              From no-code prototypes to Godot — a timeline of game projects built during my Bachelor and Master's, each one a level-up in craft, systems thinking, and player-centred design.
             </p>
 
             <div className="hero-actions">
               <button className="button button-dark" type="button" onClick={onNavigateHome}>
-                Back to software portfolio
+                Back to software
               </button>
               <a className="button button-light" href="#playable-lab">
-                Jump to playable lab
+                Play the lab demo
               </a>
             </div>
           </div>
@@ -70,9 +77,9 @@ export function GamePage({ onNavigateHome }: GamePageProps) {
         </div>
         <div className="about-grid">
           <p>
-            I build games around clear learning loops: define the player skill goal, prototype rapidly, and tune feedback
-            so each interaction teaches something useful. My process combines systems thinking from software engineering
-            with player-focused iteration from game jams and educational projects.
+            Good games are built around clear learning loops. I start by defining the core player skill — what should someone feel capable of after ten minutes? — then prototype fast and tune the feedback until every interaction is legible and satisfying. My software engineering background keeps the systems clean and maintainable; my design instincts keep the player experience front and centre.
+
+            I've worked across both no-code tools (GDevelop) and full scripting environments (Godot / GDScript), which gives me a practical sense of when to reach for each. I'm equally comfortable whiteboarding a mechanic on paper and committing it to code.
           </p>
           <ul>
             <li>Rapid prototypes first, then targeted polish passes</li>

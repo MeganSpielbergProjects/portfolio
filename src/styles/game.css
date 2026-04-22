@@ -1,143 +1,350 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap');
+
 .game-page {
-  --bg-soft: rgba(34, 22, 12, 0.8);
-  --surface: rgba(48, 29, 16, 0.9);
-  --surface-strong: rgba(69, 41, 21, 0.96);
-  --text: #fff6e7;
-  --muted: #f1cf9d;
-  --accent: #ff9f42;
-  --accent-2: #ffe06a;
-  --border: rgba(255, 198, 102, 0.24);
-  --shadow: 0 24px 72px rgba(0, 0, 0, 0.42);
+  --bg:         #100c08;
+  --surface:    rgba(255,255,255,0.035);
+  --surface-2:  rgba(255,255,255,0.055);
+  --border:     rgba(255,200,100,0.14);
+  --border-2:   rgba(255,200,100,0.26);
+  --text:       #fdf5e8;
+  --muted:      #c4a97a;
+  --amber:      #ffb347;
+  --gold:       #ffd166;
+  --green:      #8fffaa;
+  --shadow:     0 32px 80px rgba(0,0,0,0.55);
+  --r-card:     22px;
+  --r-pill:     999px;
+  --font-display: 'Syne', sans-serif;
+  --font-body:    'DM Sans', sans-serif;
+  --font-mono:    'DM Mono', monospace;
 }
 
 .game-page::before {
   content: '';
   position: fixed;
   inset: 0;
-  pointer-events: none;
   z-index: -2;
+  pointer-events: none;
   background:
-    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    radial-gradient(circle at 10% 12%, rgba(129, 255, 137, 0.2), transparent 18%),
-    radial-gradient(circle at 90% 14%, rgba(255, 225, 106, 0.22), transparent 20%),
-    radial-gradient(circle at 50% 86%, rgba(255, 159, 66, 0.1), transparent 22%),
-    linear-gradient(180deg, rgba(3, 6, 12, 0.4), rgba(3, 6, 12, 0.92));
-  background-size: 32px 32px, 32px 32px, auto, auto, auto, auto;
-  opacity: 0.95;
+    radial-gradient(circle at 84% 8%, rgba(255, 211, 102, 0.11), transparent 28%),
+    radial-gradient(circle at 8% 18%, rgba(143, 255, 170, 0.1), transparent 28%),
+    radial-gradient(circle at 84% 82%, rgba(255, 179, 71, 0.08), transparent 26%),
+    linear-gradient(180deg, #100c08 0%, #0f0b08 42%, #090603 100%);
+}
+
+.game-page .backdrop {
+  filter: blur(80px);
+  opacity: 0.45;
 }
 
 .game-page .backdrop-one {
-  background: rgba(129, 255, 137, 0.18);
+  background: rgba(255, 211, 102, 0.11);
 }
 
 .game-page .backdrop-two {
-  background: rgba(255, 225, 106, 0.18);
+  background: rgba(143, 255, 170, 0.09);
 }
 
 .game-page .panel {
-  border-color: rgba(255, 198, 102, 0.18);
-  box-shadow:
-    0 20px 60px rgba(0, 0, 0, 0.38),
-    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(16px);
 }
 
 .game-page .nav {
-  background: rgba(18, 13, 9, 0.84);
-  border-color: rgba(255, 198, 102, 0.18);
+  position: sticky;
+  top: 10px;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 10px 18px;
+  background: rgba(16, 12, 8, 0.82);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  backdrop-filter: blur(14px);
+}
+
+.game-page .nav-brand {
+  display: flex;
+  align-items: center;
+}
+
+.game-page .nav-title {
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.game-page .nav-links {
+  display: flex;
+  gap: 2px;
+  flex-wrap: wrap;
+}
+
+.game-page .nav-title,
+.game-page .nav-link,
+.game-page .nav-switch,
+.game-page .nav-switch-text {
+  font-family: var(--font-mono);
+}
+
+.game-page .nav-link {
+  padding: 6px 11px;
+  font-size: 0.82rem;
+  color: var(--muted);
+  border-radius: 8px;
+  text-decoration: none;
+  transition: color 140ms, background 140ms;
+}
+
+.game-page .nav-link:hover,
+.game-page .nav-link-active {
+  color: var(--text);
+  background: var(--surface-2);
+}
+
+.game-page .nav-switch {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  cursor: pointer;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 8px 4px 4px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  transition: border-color 150ms;
+  border-color: var(--border);
+  color: var(--muted);
+}
+
+.game-page .nav-switch:hover {
+  border-color: var(--border-2);
+}
+
+.game-page .nav-switch-track {
+  width: 36px;
+  height: 20px;
+  border-radius: 999px;
+  background: rgba(255, 200, 100, 0.18);
+  border: 1px solid rgba(255, 200, 100, 0.3);
+  padding: 2px;
+  display: flex;
+  align-items: center;
+}
+
+.game-page .nav-switch-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--gold);
+  transform: translateX(16px);
+  box-shadow: 0 0 8px rgba(255, 209, 102, 0.5);
+}
+
+.game-page .nav-switch-text {
+  font-size: 0.68rem;
+  color: var(--muted);
+}
+
+.game-page .hero,
+.game-page .game-gate,
+.game-page .about-panel,
+.game-page .playable-lab-teaser,
+.game-page .contact-panel {
+  padding: clamp(24px, 4vw, 40px);
+  position: relative;
+  overflow: hidden;
 }
 
 .game-page .hero {
-  position: relative;
-  overflow: hidden;
   background:
-    linear-gradient(180deg, rgba(37, 22, 14, 0.92), rgba(18, 11, 8, 0.92)),
-    radial-gradient(circle at 16% 18%, rgba(129, 255, 137, 0.12), transparent 22%),
-    radial-gradient(circle at 82% 22%, rgba(255, 225, 106, 0.12), transparent 24%);
+    linear-gradient(160deg, rgba(255, 211, 102, 0.06) 0%, transparent 40%),
+    linear-gradient(180deg, rgba(34, 21, 12, 0.95) 0%, rgba(16, 10, 6, 0.98) 100%);
 }
 
-.game-page .hero::after {
+.game-page .hero::before,
+.game-page .game-gate::before,
+.game-page .about-panel::before,
+.game-page .playable-lab-teaser::before,
+.game-page .contact-panel::before {
   content: '';
   position: absolute;
-  inset: 16px;
-  border-radius: 22px;
-  border: 1px dashed rgba(255, 225, 106, 0.12);
+  inset: 14px;
+  border-radius: 20px;
+  border: 1px dashed rgba(255, 211, 102, 0.1);
   pointer-events: none;
 }
 
-.game-page .hero-copy h1 {
-  text-shadow: 0 0 18px rgba(255, 225, 106, 0.12);
+.game-page .hero-layout {
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  gap: 32px;
+  align-items: center;
+}
+
+.game-page .hero-copy {
+  gap: 18px;
+}
+
+.game-page h1,
+.game-page h2,
+.game-page h3 {
+  font-family: var(--font-display);
+  letter-spacing: -0.04em;
+}
+
+.game-page h1 {
+  max-width: 10ch;
+  font-size: clamp(3rem, 7vw, 5.6rem);
+  line-height: 0.92;
+}
+
+.game-page .hero-title {
+  margin: 0;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+.game-page .hero-highlight {
+  color: var(--gold);
+}
+
+.game-page h2 {
+  font-size: clamp(1.7rem, 3.5vw, 2.5rem);
+  line-height: 1.1;
+}
+
+.game-page .hero-text,
+.game-page .about-grid p,
+.game-page .runner-instructions p,
+.game-page .runner-instructions li,
+.game-page .runner-summary p,
+.game-page .contact-value {
+  font-family: var(--font-body);
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.game-page .hero-text {
+  max-width: 54ch;
+  font-size: 1.08rem;
+}
+
+.game-page .hero-actions {
+  gap: 12px;
+}
+
+.game-page .button-dark {
+  background: linear-gradient(135deg, var(--gold), var(--amber));
+  color: #1a1000;
+  box-shadow: 0 8px 24px rgba(255, 209, 102, 0.2);
+}
+
+.game-page .button-dark:hover {
+  box-shadow: 0 12px 32px rgba(255, 209, 102, 0.32);
+}
+
+.game-page .button-light {
+  background: var(--surface);
+  border-color: var(--border);
+  color: var(--text);
+}
+
+.game-page .button-light:hover {
+  background: var(--surface-2);
+  border-color: var(--border-2);
 }
 
 .game-page .hero-visual {
   position: relative;
-  min-height: 320px;
-  padding: 22px;
-  border-radius: 26px;
-  border: 2px solid rgba(255, 225, 106, 0.16);
+  min-height: 280px;
+  padding: 20px;
+  border-radius: 24px;
+  border: 2px solid rgba(255, 211, 102, 0.16);
   background:
-    linear-gradient(135deg, rgba(129, 255, 137, 0.14), transparent 34%),
-    linear-gradient(180deg, rgba(78, 44, 24, 0.98), rgba(34, 21, 12, 0.92));
+    linear-gradient(135deg, rgba(143, 255, 170, 0.12) 0%, transparent 40%),
+    linear-gradient(180deg, rgba(68, 40, 20, 0.98), rgba(28, 16, 8, 0.96));
   overflow: hidden;
 }
 
 .game-page .hero-visual::before {
   content: '';
   position: absolute;
-  inset: 12px;
-  border-radius: 20px;
-  border: 1px solid rgba(255, 225, 106, 0.12);
-  background:
-    linear-gradient(90deg, transparent 0 48%, rgba(255, 225, 106, 0.16) 48% 52%, transparent 52% 100%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent 32%, transparent 68%, rgba(255, 255, 255, 0.05));
-  opacity: 0.45;
+  inset: 10px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 211, 102, 0.1);
+  pointer-events: none;
 }
 
 .game-page .hero-character {
+  width: min(100%, 300px);
   position: relative;
   z-index: 1;
-  width: min(100%, 320px);
-  filter: drop-shadow(0 0 24px rgba(255, 159, 66, 0.24)) drop-shadow(0 18px 24px rgba(0, 0, 0, 0.42));
 }
 
-.game-page .button-dark {
-  background: linear-gradient(135deg, #7bff83 0%, #ffe06a 100%);
-  color: #181108;
-  box-shadow: 0 12px 26px rgba(136, 255, 150, 0.16);
+.game-page .hero-visual-placeholder {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  gap: 8px;
+  color: rgba(255, 211, 102, 0.45);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
 }
 
-.game-page .button-light {
-  background: rgba(255, 255, 255, 0.04);
-  border-color: rgba(255, 225, 106, 0.18);
+.game-page .hero-visual-icon {
+  font-size: 3rem;
+  line-height: 1;
+  opacity: 0.65;
 }
 
-.game-page .button-light:hover {
-  background: rgba(255, 255, 255, 0.08);
+.game-page .hero-visual-label {
+  color: rgba(255, 211, 102, 0.5);
+}
+
+.game-page .section-heading {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.game-page .section-heading h2 {
+  text-shadow: 0 0 18px rgba(255, 211, 102, 0.08);
+}
+
+.game-page .game-gate,
+.game-page .playable-lab-teaser {
+  background:
+    linear-gradient(180deg, rgba(50, 28, 14, 0.94), rgba(20, 12, 8, 0.97)),
+    radial-gradient(circle at top left, rgba(143, 255, 170, 0.06), transparent 30%);
 }
 
 .game-page .game-gate {
-  position: relative;
-  overflow: hidden;
-  background:
-    linear-gradient(180deg, rgba(57, 33, 18, 0.9), rgba(30, 17, 9, 0.94)),
-    radial-gradient(circle at top left, rgba(129, 255, 137, 0.08), transparent 26%);
-}
-
-.game-page .game-gate::after {
-  content: '';
-  position: absolute;
-  inset: auto 18px 18px 18px;
-  height: 10px;
-  border-radius: 999px;
-  background: linear-gradient(90deg, transparent, rgba(255, 225, 106, 0.45), transparent);
-  opacity: 0.6;
+  padding-bottom: 34px;
 }
 
 .game-page .journey-grid {
   position: relative;
+  display: grid;
   grid-template-columns: 1fr;
   gap: 18px;
   padding: 8px 0 28px;
+}
+
+.game-page .journey-grid .journey-card:first-child {
+  grid-column: auto;
 }
 
 .game-page .journey-grid::before {
@@ -146,10 +353,9 @@
   top: 0;
   bottom: 0;
   left: 50%;
-  width: 4px;
+  width: 2px;
   transform: translateX(-50%);
-  background: linear-gradient(180deg, transparent, rgba(255, 225, 106, 0.32), transparent);
-  opacity: 0.4;
+  background: linear-gradient(180deg, transparent, rgba(255, 211, 102, 0.3) 12%, rgba(255, 211, 102, 0.3) 88%, transparent);
 }
 
 .game-page .journey-grid .journey-card {
@@ -161,10 +367,6 @@
   box-shadow: none;
 }
 
-.game-page .journey-grid .journey-card:first-child {
-  grid-column: auto;
-}
-
 .game-page .journey-grid .preview-card {
   position: relative;
   width: min(560px, calc(50% - 44px));
@@ -174,7 +376,7 @@
   border-radius: 24px;
   background:
     linear-gradient(180deg, rgba(73, 43, 22, 0.98), rgba(33, 19, 11, 0.96)),
-    radial-gradient(circle at top right, rgba(129, 255, 137, 0.1), transparent 24%);
+    radial-gradient(circle at top right, rgba(143, 255, 170, 0.1), transparent 24%);
   box-shadow:
     0 18px 48px rgba(0, 0, 0, 0.34),
     inset 0 1px 0 rgba(255, 255, 255, 0.04);
@@ -194,8 +396,9 @@
 }
 
 .game-page .journey-grid .thumbnail-placeholder {
-  min-height: 0;
+  min-height: 170px;
   height: 170px;
+  border-color: rgba(255, 200, 100, 0.18);
 }
 
 .game-page .journey-grid .preview-copy {
@@ -203,6 +406,7 @@
 }
 
 .game-page .journey-grid .preview-description {
+  line-clamp: 2;
   -webkit-line-clamp: 2;
 }
 
@@ -211,7 +415,7 @@
   position: absolute;
   inset: 0;
   border-radius: 22px;
-  background: linear-gradient(135deg, rgba(255, 225, 106, 0.1), transparent 22%, transparent 78%, rgba(129, 255, 137, 0.06));
+  background: linear-gradient(135deg, rgba(255, 211, 102, 0.1), transparent 22%, transparent 78%, rgba(143, 255, 170, 0.06));
   pointer-events: none;
 }
 
@@ -222,7 +426,7 @@
   right: -38px;
   width: 38px;
   height: 2px;
-  background: linear-gradient(90deg, rgba(255, 225, 106, 0.5), rgba(255, 225, 106, 0.22));
+  background: linear-gradient(90deg, rgba(255, 211, 102, 0.5), rgba(255, 211, 102, 0.22));
 }
 
 .game-page .journey-grid .journey-card:nth-child(even) .preview-card::after {
@@ -241,52 +445,56 @@
   border-radius: 999px;
   border: 1px solid rgba(255, 225, 106, 0.34);
   background: rgba(26, 16, 10, 0.94);
-  color: #ffe06a;
+  color: var(--accent-2);
   font-size: 0.74rem;
   line-height: 1;
   letter-spacing: 0.08em;
   text-align: center;
-  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-family: var(--font-mono);
 }
 
 .game-page .project-kicker {
-  color: #ffe06a;
+  color: var(--accent-2);
 }
 
 .game-page .tags span {
-  background: rgba(255, 225, 106, 0.08);
-  border-color: rgba(255, 225, 106, 0.18);
+  background: rgba(255, 211, 102, 0.08);
+  border-color: rgba(255, 211, 102, 0.18);
 }
 
 .game-page .media-placeholder,
 .game-page .media-carousel,
 .game-page .media-card-link {
-  border-color: rgba(255, 198, 102, 0.18);
+  border-color: rgba(255, 200, 100, 0.18);
 }
 
 .game-page .media-placeholder {
-  background: rgba(255, 225, 106, 0.04);
+  background: rgba(255, 211, 102, 0.04);
 }
 
 .game-page .media-placeholder p,
 .game-page .carousel-counter {
-  color: #ffe06a;
+  color: var(--accent-2);
 }
 
-.game-page .contact-panel {
-  background: linear-gradient(180deg, rgba(47, 28, 15, 0.92), rgba(25, 15, 8, 0.96));
-}
-
-.game-page .playable-lab-teaser {
-  background:
-    linear-gradient(180deg, rgba(52, 30, 16, 0.92), rgba(27, 16, 10, 0.95)),
-    radial-gradient(circle at top left, rgba(129, 255, 137, 0.08), transparent 28%);
-}
-
-.game-page .playable-lab-teaser .journey-runner-page {
+.game-page .about-grid {
   display: grid;
-  gap: 14px;
-  margin-top: 6px;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+.game-page .about-grid ul {
+  margin: 0;
+  padding-left: 20px;
+  color: var(--text);
+  line-height: 1.9;
+}
+
+.game-page .about-grid p {
+  color: var(--muted);
+  font-size: 1.02rem;
+  line-height: 1.75;
 }
 
 .game-page .playable-lab-teaser .runner-hero,
@@ -308,19 +516,58 @@
 
 .game-page .playable-lab-teaser .runner-instructions {
   background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 200, 100, 0.14);
 }
 
 .game-page .playable-lab-teaser .runner-stage {
   padding-bottom: 16px;
 }
 
+.game-page .contact-panel {
+  background: linear-gradient(180deg, rgba(45, 26, 14, 0.94), rgba(18, 10, 6, 0.97));
+}
+
+.game-page .contact-stack {
+  display: grid;
+  gap: 10px;
+}
+
+.game-page .contact-item {
+  padding: 14px 18px;
+  border: 1px solid rgba(255, 200, 100, 0.14);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.game-page .contact-label {
+  color: var(--amber);
+}
+
+.game-page .contact-linkedin {
+  border-color: rgba(255, 200, 100, 0.14);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.game-page .contact-linkedin:hover {
+  border-color: rgba(255, 200, 100, 0.26);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.game-page .contact-linkedin svg {
+  fill: #0a66c2;
+}
+
 @media (max-width: 980px) {
+  .game-page .hero-layout,
+  .game-page .about-grid {
+    grid-template-columns: 1fr;
+  }
+
   .game-page .hero-visual {
-    min-height: 260px;
+    min-height: 220px;
   }
 
   .game-page .journey-grid {
-    grid-template-columns: 1fr;
     gap: 14px;
     padding-bottom: 36px;
   }
@@ -348,8 +595,31 @@
     top: 18px;
   }
 
+  .game-page .journey-grid .thumbnail-placeholder {
+    min-height: 170px;
+    height: 170px;
+  }
+
   .game-page .playable-lab-teaser .runner-hero,
   .game-page .playable-lab-teaser .runner-stage {
     padding: 16px;
+  }
+}
+
+@media (max-width: 580px) {
+  .game-page .hero,
+  .game-page .game-gate,
+  .game-page .about-panel,
+  .game-page .playable-lab-teaser,
+  .game-page .contact-panel {
+    padding: 20px;
+  }
+
+  .game-page .hero-text {
+    font-size: 1rem;
+  }
+
+  .game-page .journey-grid .preview-card {
+    width: 100%;
   }
 }
