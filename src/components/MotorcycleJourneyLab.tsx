@@ -454,7 +454,21 @@ export function MotorcycleJourneyLab() {
               ))}
             </div>
 
-            <button className="button button-dark runner-jump-overlay" type="button" onClick={jump} disabled={!jumpReady}>
+            <button
+              className="button button-dark runner-jump-overlay"
+              type="button"
+              onPointerDown={(event) => {
+                event.preventDefault();
+                jump();
+              }}
+              onKeyDown={(event) => {
+                if (event.key === ' ' || event.key === 'Enter') {
+                  event.preventDefault();
+                  jump();
+                }
+              }}
+              disabled={!jumpReady}
+            >
               Jump
             </button>
 
