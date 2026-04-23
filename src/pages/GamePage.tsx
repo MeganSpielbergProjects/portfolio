@@ -16,8 +16,8 @@ export function GamePage({ onNavigateHome }: GamePageProps) {
 
       <NavBar
         links={[
-          { label: 'About', href: '#about-game' },
           { label: 'Games', href: '#timeline' },
+          { label: 'About', href: '#about-game' },
           { label: 'Playable Lab', href: '#playable-lab' },
           { label: 'Contact', href: '#contact-game' },
         ]}

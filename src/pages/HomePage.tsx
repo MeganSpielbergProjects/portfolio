@@ -29,7 +29,7 @@ export function HomePage({ onNavigateGame }: HomePageProps) {
             <p className="eyebrow">Software engineering portfolio</p>
             <h1>The Digital Architect</h1>
             <p className="hero-text">
-              Structure, performance, and clean data visualization shaped like a blueprint editor and tuned for technical depth.
+              Bridging the gap between concept and code. I build scalable, modular software across diverse environments.
             </p>
 
             <div className="hero-actions">
@@ -54,7 +54,7 @@ export function HomePage({ onNavigateGame }: HomePageProps) {
           </div>
 
           <div className="hero-visual" aria-hidden="true">
-            <img className="hero-character" src="/media/megan_character.png" alt="" />
+            <img className="hero-character" src="/media/hero_image.png" alt="" />
           </div>
         </div>
       </section>
@@ -62,18 +62,12 @@ export function HomePage({ onNavigateGame }: HomePageProps) {
       <section className="panel about-panel" id="about">
         <div className="section-heading">
           <p className="eyebrow">About</p>
-          <h2>How the architecture is organized</h2>
+          <h2>The Blueprint</h2>
         </div>
         <div className="about-grid">
           <p>
-            The main flow focuses on software engineering case studies. The layout stays modular and precise so projects read
-            like structural systems rather than decorative cards.
+            I’m a versatile builder who loves the process of creating, regardless of the platform. Through extensive team experience and a wide range of projects, I’ve cultivated a broad technical foundation. I thrive on that variety, though I’m always open to sharpening my focus and specializing whenever the work requires it.
           </p>
-          <ul>
-            <li>Blue-toned surfaces with subtle glow and strong legibility</li>
-            <li>Case studies framed as reusable structural modules</li>
-            <li>Reserved space for metrics, screenshots, and technical context</li>
-          </ul>
         </div>
       </section>
 

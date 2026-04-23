@@ -145,6 +145,11 @@ h1 em {
 
 .game-page .hero-visual {
   position: relative;
+  /* Centering properties */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
   min-height: 320px;
   padding: 22px;
   border-radius: 26px;
@@ -162,12 +167,14 @@ h1 em {
   border-radius: 20px;
   border: 1px solid rgba(255, 225, 106, 0.12);
   opacity: 0.45;
+  /* Ensure the pseudo-element doesn't interfere with flex centering */
+  pointer-events: none; 
 }
 
 .game-page .hero-character {
   position: relative;
   z-index: 1;
-  width: min(100%, 320px);
+  width: min(70%, 320px);
   filter: drop-shadow(0 0 24px rgba(255, 159, 66, 0.24)) drop-shadow(0 18px 24px rgba(0, 0, 0, 0.42));
 }
 

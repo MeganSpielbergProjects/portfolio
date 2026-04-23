@@ -103,8 +103,16 @@
 .software-page .hero-character {
   position: relative;
   z-index: 1;
-  width: min(100%, 320px);
-  filter: drop-shadow(0 0 28px rgba(117, 183, 255, 0.32)) drop-shadow(0 16px 24px rgba(0, 0, 0, 0.4));
+  width: min(100%, 360px);
+  max-height: 460px;
+  object-fit: contain;
+  filter:
+    saturate(0.9)
+    contrast(1.07)
+    brightness(0.93)
+    hue-rotate(8deg)
+    drop-shadow(0 0 24px rgba(117, 183, 255, 0.24))
+    drop-shadow(0 22px 28px rgba(0, 0, 0, 0.42));
 }
 
 .software-page .hero-metrics article {
