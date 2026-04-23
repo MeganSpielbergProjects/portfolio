@@ -31,7 +31,7 @@ export function GamePage({ onNavigateHome }: GamePageProps) {
             <p className="eyebrow">Game development portfolio</p>
             <h1>The <em>Pixel</em> Journey</h1>
             <p className="hero-subtitle">
-              From no-code prototypes to Godot — a timeline of game projects
+              From no-code prototypes to Godot. A timeline of game projects
               built during my Bachelor and Master's, each one a level-up
               in craft, systems thinking, and player-centred design.
             </p>
@@ -67,15 +67,13 @@ export function GamePage({ onNavigateHome }: GamePageProps) {
         </div>
         <div className="about-grid">
           <p>
-            Good games are built around <strong>clear learning loops</strong>.
-            I start by defining the core player skill — what should someone feel capable of after
-            ten minutes? — then prototype fast and tune the feedback until every interaction
-            is legible and satisfying. My software engineering background keeps the systems
-            clean and maintainable; my design instincts keep the player experience front and centre.
-            <br /><br />
-            I've worked across both no-code tools (GDevelop) and full scripting environments
+            Good games are built around clear learning loops. I start by defining the core audience and their skill level, 
+            then prototype rapidly and adapt to feedback until every mechanic, UI element, and line of code serves the goal 
+            of making those loops feel intuitive and fun. My software engineering background keeps the systems clean and maintainable; 
+            my focus on user experience keeps the player front and centre.
+
+            I have worked across both no-code tools (GDevelop, n8n) and full scripting environments
             (Godot / GDScript), which gives me a practical sense of when to reach for each.
-            I'm equally comfortable whiteboarding a mechanic on paper and committing it to code.
           </p>
           <ul>
             <li>Rapid prototypes first, then targeted polish passes</li>

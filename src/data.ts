@@ -13,6 +13,10 @@ const insectDetectionPipeline = '/media/insect_detection_pipeline.png';
 const insectDetectionResults = '/media/insect_detection_results.png';
 const myHabitBannerPdf = '/MyHabitBanner.pdf';
 const shareplatePoster = '/media/shareplate_poster.png';
+const spohfDataCollection = '/media/spohf_dataset.png';
+const spohfLogo = '/media/spohf_thumbnail.png';
+const cgi_logo = '/media/cgi_thumbnail.png';
+const legaSeaLogo = '/media/lega_sea.png';
 
 export const softwareCaseStudies: CaseStudy[] = [
   {
@@ -51,6 +55,7 @@ export const softwareCaseStudies: CaseStudy[] = [
     outcome:
       'Expanded test coverage, introduced automation, and added coverage reporting insights to make quality visible.',
     stack: ['Java', 'Spring Boot', 'Testing', 'CI insight reporting'],
+    imagePath: cgi_logo,
     mediaPlaceholder: 'Add sanitized pipeline screenshot and redacted test dashboard.',
   },
   {
@@ -61,6 +66,7 @@ export const softwareCaseStudies: CaseStudy[] = [
     outcome: 'Produced a working research direction and repeatable experimentation pipeline.',
     stack: ['Python', 'ML/DL research', 'Data processing'],
     mediaPlaceholder: '',
+    imagePath: spohfLogo,
     projectUrl: '/NWO%20Poster.pdf',
     mediaItems: [
       {
@@ -75,6 +81,12 @@ export const softwareCaseStudies: CaseStudy[] = [
         caption: 'Results from the insect detection pipeline.',
         type: 'image',
       },
+      {
+        src: spohfDataCollection,
+        alt: 'SPoHF public insect detection dataset',
+        caption: 'Public dataset of insect images collected for the SPoHF project and used for training and testing the detection pipeline.',
+        type: 'image',
+      }
     ],
   },
   {
@@ -86,6 +98,7 @@ export const softwareCaseStudies: CaseStudy[] = [
     outcome: 'Shipped an application prototype on practical capture guidance and photo quality improvement.',
     stack: ['Research software', 'Python', 'React', 'User guidance design'],
     mediaPlaceholder: 'Add before/after sample images and short usage walkthrough GIF.',
+    imagePath: legaSeaLogo,
     projectUrl: 'https://meganspielberg.github.io/fossil-ai-feedback/',
     githubUrl: 'https://github.com/MeganSpielberg/fossil-ai-feedback',
     mediaItems: [
