@@ -429,17 +429,9 @@ h2 {
 }
 
 .about-grid {
-  display: grid;
-  grid-template-columns: 1.6fr 1fr;
+  display: flex;
   gap: 24px;
   align-items: start;
-}
-
-.about-grid ul {
-  margin: 0;
-  padding-left: 20px;
-  color: var(--text);
-  line-height: 1.9;
 }
 
 .contact-stack {
@@ -558,12 +550,15 @@ h2 {
 .preview-thumbnail-with-image {
   overflow: hidden;
   border-style: solid;
+
+  aspect-ratio: 4 / 3;   /* enforce uniform ratio */
+  width: 100%;           /* or set a fixed width if needed */
 }
 
 .preview-thumbnail-image {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: cover;     /* crops instead of stretching */
   display: block;
 }
 

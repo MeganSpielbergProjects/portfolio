@@ -55,7 +55,7 @@ export function CaseStudyCard({ project }: CaseStudyCardProps) {
       <article className="card-overlay-panel" onClick={(event) => event.stopPropagation()}>
         <header className="card-overlay-header">
           <div>
-            <p className="project-kicker">Case study</p>
+            <p className="project-kicker">Project</p>
             <h3 id={titleId}>{project.title}</h3>
           </div>
           <button className="button button-light button-small card-overlay-close" type="button" onClick={() => setIsOpen(false)}>
@@ -122,7 +122,6 @@ export function CaseStudyCard({ project }: CaseStudyCardProps) {
           </div>
         )}
         <div className="preview-copy">
-          <p className="project-kicker">Case study</p>
           <h3>{project.title}</h3>
           <p className="preview-description">{project.outcome}</p>
         </div>
