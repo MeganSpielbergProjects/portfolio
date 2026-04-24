@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { Analytics } from '@vercel/analytics/react';
 import { HomePage } from './pages/HomePage';
 import { GamePage } from './pages/GamePage';
 
@@ -27,20 +26,10 @@ function App() {
   const onNavigateGame = () => navigateTo('/game-journey');
 
   if (currentPath === '/game-journey') {
-    return (
-      <>
-        <GamePage onNavigateHome={onNavigateHome} />
-        <Analytics />
-      </>
-    );
+    return <GamePage onNavigateHome={onNavigateHome} />;
   }
 
-  return (
-    <>
-      <HomePage onNavigateGame={onNavigateGame} />
-      <Analytics />
-    </>
-  );
+  return <HomePage onNavigateGame={onNavigateGame} />;
 }
 
 export default App;
