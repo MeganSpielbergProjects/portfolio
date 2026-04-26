@@ -17,103 +17,148 @@ const spohfDataCollection = '/media/spohf_dataset.png';
 const spohfLogo = '/media/spohf_thumbnail.png';
 const cgi_logo = '/media/cgi_thumbnail.png';
 const legaSeaLogo = '/media/lega_sea.png';
+const cgi_cicd = '/media/cgi_cicd.png';
+const cgi_data_synch = '/media/cgi_data_synch.png';
+const spohf_poster = '/media/spohf_poster.png';
 
 export const softwareCaseStudies: CaseStudy[] = [
   {
-    title: 'Food rescue iOS app',
-    context: 'University semester project, team of 4.',
-    role: 'iOS app contributor across product and implementation.',
+    title: "Food Rescue iOS App",
+    context: "University semester project developed in a team of four.",
+    role: "Contributed to iOS development, UX decisions, and overall product design.",
     challenge:
-      'Create a trustworthy way for people to offer leftover food and connect quickly with people nearby who can use it.',
+      "Design a reliable and intuitive platform that enables people to share surplus food while building trust and encouraging community participation.",
     outcome:
-      'Delivered a native iOS app prototype that framed food sharing as a simple, community-first interaction.',
-    stack: ['iOS native', 'Team collaboration', 'University project'],
+      "Developed a native iOS prototype that simplifies food sharing into a fast, community-driven interaction.",
+    stack: ["Swift (iOS)", "UIKit", "Team collaboration", "Agile project work"],
     imagePath: shareplateLogo,
-    imageCaption: 'SharePlate project logo and banner.',
+    imageCaption: "SharePlate project logo and banner.",
     mediaItems: [
       {
         src: shareplateDemo,
-        alt: 'SharePlate iOS app demo screens',
-        caption: 'SharePlate mobile app flow showing home feed and map view.',
-        type: 'image',
+        alt: "SharePlate iOS app demo screens",
+        caption: "SharePlate mobile app flow showing home feed and map view.",
+        type: "image",
       },
       {
         src: shareplatePoster,
-        alt: 'SharePlate project poster',
-        caption: 'SharePlate project poster.',
-        type: 'image',
-      }
+        alt: "SharePlate project poster",
+        caption: "SharePlate project poster.",
+        type: "image",
+      },
     ],
-    mediaPlaceholder: 'Add app screenshots, core flow GIF, and architecture sketch.',
+    mediaPlaceholder:
+      "Add app screenshots, core flow GIF, and architecture sketch.",
   },
   {
-    title: 'Test quality improvements at CGI Germany',
-    context: 'Internship in an international team.',
-    role: 'Owned test quality improvements for a Java Spring Boot application.',
+    title:
+      "Enhancing Test Quality and Automation for a Cross-Border Data Synchronization Project",
+    context:
+      "Internship at CGI Germany, an international IT and business consulting firm, as part of a project for a German authority. Worked in a global team to synchronize veterinary product data between a German database and the central European database.",
+    role: "Led test quality improvements for a Java-based application, focusing on unit and integration testing, test automation, and CI/CD pipeline integration.",
     challenge:
-      'Improve confidence in a system that connected two data ecosystems while preserving delivery speed.',
+      "Analyzed and expanded test coverage to close gaps, automated test data creation and execution in the CI/CD pipeline, developed visualizations to communicate quality metrics, and delivered project documentation (project plan, mid-term report, and final report) for university requirements.",
     outcome:
-      'Expanded test coverage, introduced automation, and added coverage reporting insights to make quality visible.',
-    stack: ['Java', 'Spring Boot', 'Testing', 'CI insight reporting'],
+      "Improved automated test coverage and CI/CD reliability while providing clear quality reporting for the project team.",
+    stack: [
+      "Java",
+      "Spring Boot",
+      "WireMock",
+      "Mockito",
+      "Liquibase",
+      "GitLab",
+      "CI/CD",
+      "Test Automation",
+    ],
     imagePath: cgi_logo,
-    mediaPlaceholder: 'Add sanitized pipeline screenshot and redacted test dashboard.',
+    mediaItems: [
+      {
+        src: cgi_cicd,
+        alt: "CI/CD pipeline integration diagram",
+        caption:
+          "CI/CD Pipeline with Test Automation. (More detailed implementation details confidential)",
+        type: "image",
+      },
+      {
+        src: cgi_data_synch,
+        alt: "Data synchronization architecture diagram",
+        caption:
+          "ETL pipeline from source to target database. (More detailed implementation details confidential)",
+        type: "image",
+      },
+    ],
+    mediaPlaceholder:
+      "Add sanitized pipeline screenshots, redacted test dashboards, and sample diagrams (business processes, components, sequences).",
   },
   {
-    title: 'SPoHF insect detection CNN research',
-    context: 'Research-focused project.',
-    role: 'Built and iterated on an CNN-centered detection approach.',
-    challenge: 'Design a practical workflow for insect detection using Python-heavy experimentation.',
-    outcome: 'Produced a working research direction and repeatable experimentation pipeline.',
-    stack: ['Python', 'ML/DL research', 'Data processing'],
-    mediaPlaceholder: '',
+    title: "SPoHF insect detection CNN research",
+    context:
+      "Bachelor thesis for the SPoHF (Sustainable Production of Healthy Foods) research project at Fontys University of Applied Sciences.",
+    role: "Developed a two-stage AI pipeline for detecting and classifying insects on yellow card traps.",
+    challenge:
+      "Design a practical, license-free workflow that could reduce manual insect counting, improve dataset quality, and support reliable detection in a real agricultural setting.",
+    outcome:
+      "Produced a working research direction and repeatable experimentation pipeline.",
+    stack: ["Python", "OpenCV", "CNNs", "PyTorch", "Data processing"],
+    mediaPlaceholder: "",
     imagePath: spohfLogo,
-    projectUrl: '/NWO%20Poster.pdf',
     mediaItems: [
       {
         src: insectDetectionPipeline,
-        alt: 'Insect detection model pipeline diagram',
-        caption: 'Two stage process from using computer vision and CNNs to detect insects in images.',
-        type: 'image',
+        alt: "Insect detection model pipeline diagram",
+        caption:
+          "Two-stage pipeline: computer vision finds candidate objects first, then a CNN classifies each one as insect or non-insect.",
+        type: "image",
       },
       {
         src: insectDetectionResults,
-        alt: 'Insect detection experiment results',
-        caption: 'Results from the insect detection pipeline.',
-        type: 'image',
+        alt: "Insect detection experiment results",
+        caption: "Results from the insect detection pipeline.",
+        type: "image",
       },
       {
         src: spohfDataCollection,
-        alt: 'SPoHF public insect detection dataset',
-        caption: 'Public dataset of insect images collected for the SPoHF project and used for training and testing the detection pipeline.',
-        type: 'image',
-      }
+        alt: "SPoHF public insect detection dataset",
+        caption:
+          "Dataset of yellow-card trap images used for training, validation, and testing.",
+        type: "image",
+      },
+      {
+        src: spohf_poster,
+        alt: "SPoHF research poster",
+        caption: "Poster summarizing the SPoHF research.",
+        type: "image",
+      },
     ],
   },
   {
-    title: 'Fossil citizen-science photo improvement app',
-    context: 'Masters semester 1 research project.',
-    role: 'Built application logic to improve quality of submitted fossil photos.',
+    title: "Fossil citizen-science photo improvement app",
+    context: "Masters semester 1 research project.",
+    role: "Built application logic to improve quality of submitted fossil photos.",
     challenge:
-      'Help non-experts capture more useful, consistent field images that improve scientific value.',
-    outcome: 'Shipped an application prototype on practical capture guidance and photo quality improvement.',
-    stack: ['Research software', 'Python', 'React', 'User guidance design'],
-    mediaPlaceholder: 'Add before/after sample images and short usage walkthrough GIF.',
+      "Help non-experts capture more useful, consistent field images that improve scientific value.",
+    outcome:
+      "Shipped an application prototype on practical capture guidance and photo quality improvement.",
+    stack: ["Research software", "Python", "React", "User guidance design"],
+    mediaPlaceholder:
+      "Add before/after sample images and short usage walkthrough GIF.",
     imagePath: legaSeaLogo,
-    projectUrl: 'https://meganspielberg.github.io/fossil-ai-feedback/',
-    githubUrl: 'https://github.com/MeganSpielberg/fossil-ai-feedback',
+    projectUrl: "https://meganspielberg.github.io/fossil-ai-feedback/",
+    githubUrl: "https://github.com/MeganSpielberg/fossil-ai-feedback",
     mediaItems: [
       {
         src: fossilCameraPrototypes,
-        alt: 'Fossil camera prototype iterations',
-        caption: 'Three prototype screens compared in the research.',
-        type: 'image',
+        alt: "Fossil camera prototype iterations",
+        caption: "Three prototype screens compared in the research.",
+        type: "image",
       },
       {
-        src: 'https://www.youtube.com/embed/NLDBz3CPx-8',
-        alt: 'Fossil project demo and results',
-        caption: 'Demo of the fossil prototype used for testing and data collection.',
-        type: 'youtube',
-        videoId: 'NLDBz3CPx-8',
+        src: "https://www.youtube.com/embed/NLDBz3CPx-8",
+        alt: "Fossil project demo and results",
+        caption:
+          "Demo of the fossil prototype used for testing and data collection.",
+        type: "youtube",
+        videoId: "NLDBz3CPx-8",
       },
     ],
   },

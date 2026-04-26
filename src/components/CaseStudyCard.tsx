@@ -86,12 +86,12 @@ export function CaseStudyCard({ project }: CaseStudyCardProps) {
           <div className="project-links">
             {project.projectUrl && (
               <a href={project.projectUrl} target="_blank" rel="noreferrer" className="button button-small">
-                View project
+                Project page
               </a>
             )}
             {project.githubUrl && (
               <a href={project.githubUrl} target="_blank" rel="noreferrer" className="button button-small">
-                GitHub
+                GitHub Repo
               </a>
             )}
           </div>
