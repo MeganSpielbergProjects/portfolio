@@ -167,7 +167,6 @@ h1 em {
   border-radius: 20px;
   border: 1px solid rgba(255, 225, 106, 0.12);
   opacity: 0.45;
-  /* Ensure the pseudo-element doesn't interfere with flex centering */
   pointer-events: none; 
 }
 
@@ -268,12 +267,14 @@ h1 em {
 
 .game-page .journey-grid .preview-card {
   display: grid;
-  grid-template-rows: minmax(170px, 1fr) auto;
+  grid-template-rows: auto auto;
 }
 
 .game-page .journey-grid .thumbnail-placeholder {
   min-height: 0;
-  height: 170px;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  height: auto;
 }
 
 .game-page .journey-grid .preview-copy {
