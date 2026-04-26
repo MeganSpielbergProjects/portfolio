@@ -1,12 +1,16 @@
 import { CaseStudy, GameProject } from './types';
 
 const ascherwaldTitle = '/media/ascherwald_logo.png';
+const ascherwald_start = '/media/ascherwald_start.png';
+const ascherwald_story = '/media/ascherwald_story.png';
+const ascherwald_journal = '/media/ascherwald_journal.png';
 const catsAgainstDarknessTitle = '/media/cats_against_darkness_logo.png';
 const shareplateLogo = '/media/shareplate_logo2.png';
 const shareplateDemo = '/media/shareplate_demo.png';
 const scalySanctuaryLogo = '/media/scaly_sanctuary_logo.png';
 const scalySanctuaryGameLoop = '/media/scaly_sanctuary_game_loop.png';
 const scalySanctuaryPreparingSoil = '/media/scaly_sanctuary_preparing_soil.mp4';
+const scalySanctuaryScreenshot = '/media/scaly_sanctuary_screens.png';
 const myHabitLogo = '/media/myhabit_logo.png';
 const fossilCameraPrototypes = '/media/fossil_camera_prototypes.png';
 const insectDetectionPipeline = '/media/insect_detection_pipeline.png';
@@ -167,10 +171,10 @@ export const softwareCaseStudies: CaseStudy[] = [
 export const gameJourney: GameProject[] = [
   {
     title: 'Scaly Sanctuary: A reptile caretaking game',
-    arc: 'Current long-form game in development. 2026.',
-    tools: ['Godot', 'Game design', 'Research project'],
+    arc: 'Ongoing long-form game in development. 2026.',
+    tools: ['Godot', 'Game design', 'Research project', 'Iterative prototyping'],
     details:
-      'Developing a learning-focused game that teaches proper reptile care, plus a dedicated studio website around the project.',
+      'Scaly Sanctuary is an ongoing research-driven prototype focused on teaching proper reptile care through play. Current prototype functions include terrarium building and setup, feeding and routine care interactions, and contextual guidance delivered by an interactive Vet NPC who explains why each action matters to animal health.',
     imagePath: scalySanctuaryLogo,
     imageCaption: 'Scaly Sanctuary logo and visual identity.',
     mediaItems: [
@@ -187,6 +191,12 @@ export const gameJourney: GameProject[] = [
         type: 'image',
       },
       {
+        src: scalySanctuaryScreenshot,
+        alt: 'Scaly Sanctuary in game view',
+        caption: 'In-game screenshot showing the games interface.',
+        type: 'image',
+      },
+      {
         src: scalySanctuaryPreparingSoil,
         alt: 'Scaly Sanctuary gameplay preview',
         caption: 'Preparation phase gameplay showing the reptile care mechanics in action.',
@@ -198,18 +208,38 @@ export const gameJourney: GameProject[] = [
   {
     title: 'Ascherwald',
     arc: 'Rapid prototyping phase. 2025.',
-    tools: ['Game jam entry', 'Public release on itch.io'],
-    details: 'Designed and published a playable jam project.',
+    tools: ['Urban Legends Jam entry', 'GDevelop', 'Narrative RPG'],
+    details: 'Designed and published Ascherwald for the Urban Legends Jam: a short narrative RPG prototype centered on atmosphere, exploration, and folklore-inspired storytelling.',
     projectUrl: 'https://ghostpan.itch.io/ascherwald',
     imagePath: ascherwaldTitle,
     imageCaption: 'Atmospheric title art used for the game page card.',
     mediaPlaceholder: '',
+    mediaItems: [
+      {
+        src: ascherwald_start,
+        alt: 'Ascherwald starting screen',
+        caption: 'The initial screen of the Ascherwald game.',
+        type: 'image',
+      },
+      {
+        src: ascherwald_story,
+        alt: 'Ascherwald NPC interaction',
+        caption: 'The player talking to an old man NPC.',
+        type: 'image',
+      },
+      {
+        src: ascherwald_journal,
+        alt: 'Ascherwald journal',
+        caption: 'The journal system in Ascherwald is a picture-based log of the locations visited. All pictures were taken by the developers on a field trip.',
+        type: 'image',
+      },
+    ],
   },
   {
     title: 'Cats Against Darkness',
     arc: 'Rapid prototyping phase. 2025.',
-    tools: ['Game jam entry', 'Public release on itch.io'],
-    details: 'Built and published a second jam game with a different style and mechanics direction.',
+    tools: ['AI NPC Jam entry', 'Godot', 'NPC interaction design'],
+    details: 'Designed and published Cats Against Darkness for the AI NPC Jam: a dark, cat-themed prototype built to explore NPC-driven interactions and a combat-focused style. Used this project as an opportunity to learn Godot.',
     projectUrl: 'https://ghostpan.itch.io/cats-against-darkness',
     imagePath: catsAgainstDarknessTitle,
     imageCaption: 'Pixel-art title banner representing the jam tone and combat fantasy.',
@@ -220,7 +250,7 @@ export const gameJourney: GameProject[] = [
     arc: 'Bachelor project with an external client. 2024.',
     tools: ['GDevelop', 'n8n', 'Baserow'],
     details:
-      'Built a no-code game for a client who wanted players to learn about mental health and reinforce healthier habits.',
+      'Built a no-code game for an external client focused on mental health learning and habit building. The concept, presented as MyHabit: Garden of Growth, guides players through entering their garden, choosing core virtues (courage, honesty, kindness), and protecting their plants as a metaphor for maintaining healthy routines.',
     imagePath: myHabitLogo,
     imageCaption: 'MyHabit pixel-art title logo.',
     mediaItems: [

@@ -87,7 +87,7 @@ export function GameCard({ entry }: GameCardProps) {
               className="button button-small"
               aria-label={`Open ${entry.title} project`}
             >
-              View project
+              Play Game
             </a>
           </div>
         ) : null}

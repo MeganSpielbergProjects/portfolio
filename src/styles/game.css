@@ -255,6 +255,18 @@ h1 em {
   box-shadow:
     0 18px 48px rgba(0, 0, 0, 0.34),
     inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  transition: transform 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .game-page .journey-grid .preview-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(255, 198, 102, 0.4);
+    box-shadow:
+      0 24px 56px rgba(0, 0, 0, 0.4),
+      0 0 0 1px rgba(255, 225, 106, 0.14),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
 }
 
 .game-page .journey-grid .journey-card:nth-child(odd) .preview-card {

@@ -734,6 +734,15 @@ h2 {
   height: 100%;
   object-fit: cover;     /* crops instead of stretching */
   display: block;
+  transform: scale(1);
+  transition: transform 220ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .project-card:hover .preview-thumbnail-image,
+  .journey-card .preview-card:hover .preview-thumbnail-image {
+    transform: scale(1.03);
+  }
 }
 
 .thumbnail-placeholder span {
@@ -992,6 +1001,18 @@ body:has(.motorcycle-page) .card-overlay-close {
   justify-content: center;
   background: rgba(255, 255, 255, 0.02);
   overflow: hidden;
+}
+
+@media (min-width: 981px) {
+  .carousel-viewport {
+    min-height: 320px;
+    max-height: 320px;
+  }
+
+  .card-overlay-panel .carousel-viewport {
+    min-height: 380px;
+    max-height: 460px;
+  }
 }
 
 .carousel-viewport img,
