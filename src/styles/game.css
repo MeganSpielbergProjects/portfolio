@@ -537,6 +537,12 @@ h1 em {
     min-height: 260px;
   }
 
+  .game-page .journey-grid .journey-card:nth-child(odd) .preview-card,
+  .game-page .journey-grid .journey-card:nth-child(even) .preview-card {
+    margin-left: auto;
+    margin-right: 0;
+  }
+
   .game-page .journey-grid .preview-card::after {
     right: auto;
     left: -26px;
@@ -552,6 +558,16 @@ h1 em {
   .game-page .playable-lab-teaser .runner-hero,
   .game-page .playable-lab-teaser .runner-stage {
     padding: 16px;
+  }
+
+  .game-page .about-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .game-page .about-grid p {
+    font-size: 1rem;
+    line-height: 1.85;
   }
 }
 

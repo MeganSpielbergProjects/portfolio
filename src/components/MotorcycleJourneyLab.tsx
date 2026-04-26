@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import '../styles/motorcycle.css';
 
 type RewardKey = 'knowledge' | 'tools' | 'people';
@@ -92,6 +92,42 @@ function randomReward(excluded: RewardKey[] = []) {
   return pool[Math.floor(Math.random() * pool.length)];
 }
 
+function chooseBalancedReward(inventory: Record<RewardKey, number>) {
+  const rewardTypes: RewardKey[] = ['knowledge', 'tools', 'people'];
+  const remainingByReward = rewardTypes.map((reward) => ({
+    reward,
+    remaining: Math.max(0, REQUIRED_COUNT - inventory[reward]),
+  }));
+
+  const totalRemaining = remainingByReward.reduce((sum, item) => sum + item.remaining, 0);
+
+  const weightedPool = remainingByReward.map((item) => {
+    // Strongly favor categories still below target; completed categories remain possible but rare.
+    if (totalRemaining > 0 && item.remaining > 0) {
+      return { reward: item.reward, weight: 1 + item.remaining * item.remaining * 2 };
+    }
+
+    if (totalRemaining > 0) {
+      return { reward: item.reward, weight: 0.15 };
+    }
+
+    return { reward: item.reward, weight: 1 };
+  });
+
+  const totalWeight = weightedPool.reduce((sum, item) => sum + item.weight, 0);
+  let roll = Math.random() * totalWeight;
+
+  for (const item of weightedPool) {
+    roll -= item.weight;
+
+    if (roll <= 0) {
+      return item.reward;
+    }
+  }
+
+  return weightedPool[weightedPool.length - 1].reward;
+}
+
 function createPickup(id: string, x: number, reward: RewardKey): Pickup {
   return {
     id,
@@ -166,14 +202,35 @@ function nextSpawnX(baseSpawnX: number, minGap: number, entities: Array<{ x: num
   return Math.max(baseSpawnX, farthestX + minGap);
 }
 
+function getBikeAnchorX(width: number) {
+  if (width <= 720) {
+    return Math.max(24, Math.round(width * 0.12));
+  }
+
+  return START_X;
+}
+
+function getCameraOffset(width: number) {
+  if (width <= 720) {
+    return Math.max(24, Math.round(width * 0.12));
+  }
+
+  return CAMERA_OFFSET;
+}
+
 export function MotorcycleJourneyLab() {
+  const initialViewportWidth = window.innerWidth;
+  const initialBikeAnchorX = getBikeAnchorX(initialViewportWidth);
   const gameRef = useRef<GameSnapshot>(createInitialSnapshot());
   const pickupQueueRef = useRef<Pickup[]>(createPickupQueue());
   const hazardQueueRef = useRef<Hazard[]>(createHazardQueue());
   const frameRef = useRef<number | null>(null);
   const lastTimeRef = useRef<number | null>(null);
-  const [snapshot, setSnapshot] = useState<GameSnapshot>(createInitialSnapshot());
-  const [viewportWidth, setViewportWidth] = useState(() => window.innerWidth);
+  const [snapshot, setSnapshot] = useState<GameSnapshot>({
+    ...createInitialSnapshot(),
+    bikeX: initialBikeAnchorX,
+  });
+  const [viewportWidth, setViewportWidth] = useState(initialViewportWidth);
 
   const syncSnapshot = () => {
     const current = gameRef.current;
@@ -261,9 +318,7 @@ export function MotorcycleJourneyLab() {
       if (game.status === 'running' && !freeDriveZone) {
         pickupQueueRef.current.forEach((pickup, index) => {
           if (pickup.x < game.cameraX - RESPAWN_BUFFER) {
-            const rewardTypes: RewardKey[] = ['knowledge', 'tools', 'people'];
-            const missingRewards = rewardTypes.filter((reward) => game.inventory[reward] < REQUIRED_COUNT);
-            const reward = randomReward(missingRewards);
+            const reward = chooseBalancedReward(game.inventory);
             const baseSpawnX =
               game.cameraX + Math.max(viewportWidth * 2, SPAWN_AHEAD_DISTANCE) + Math.random() * 420;
             const spawnX = nextSpawnX(baseSpawnX, MIN_PICKUP_GAP, pickupQueueRef.current, index);
@@ -309,9 +364,10 @@ export function MotorcycleJourneyLab() {
         game.inventory.people >= REQUIRED_COUNT;
 
       if (hasRequiredCounts && game.status === 'running') {
+        const cameraOffset = getCameraOffset(viewportWidth);
         game.status = 'ending';
-        game.cameraX = Math.max(0, game.bikeX - CAMERA_OFFSET);
-        game.endingTargetX = game.cameraX + viewportWidth + 280;
+        game.cameraX = Math.max(0, game.bikeX - cameraOffset);
+        game.endingTargetX = game.cameraX + viewportWidth + 100;
         pickupQueueRef.current = [];
         hazardQueueRef.current = [];
       }
@@ -321,7 +377,8 @@ export function MotorcycleJourneyLab() {
       }
 
       if (game.status === 'running') {
-        const targetCamera = Math.max(0, game.bikeX - CAMERA_OFFSET);
+        const cameraOffset = getCameraOffset(viewportWidth);
+        const targetCamera = Math.max(0, game.bikeX - cameraOffset);
         game.cameraX += (targetCamera - game.cameraX) * CAMERA_SMOOTHING;
       }
 
@@ -371,9 +428,11 @@ export function MotorcycleJourneyLab() {
   }, []);
 
   const startGame = () => {
+    const bikeAnchorX = getBikeAnchorX(viewportWidth);
     resetQueues();
     gameRef.current = {
       ...createInitialSnapshot(),
+      bikeX: bikeAnchorX,
       status: 'running',
     };
     lastTimeRef.current = null;
@@ -381,41 +440,20 @@ export function MotorcycleJourneyLab() {
   };
 
   const restartGame = () => {
+    const bikeAnchorX = getBikeAnchorX(viewportWidth);
     resetQueues();
-    gameRef.current = createInitialSnapshot();
+    gameRef.current = {
+      ...createInitialSnapshot(),
+      bikeX: bikeAnchorX,
+    };
     lastTimeRef.current = null;
     syncSnapshot();
   };
 
   const inventoryOrder: RewardKey[] = ['knowledge', 'tools', 'people'];
   const jumpReady = snapshot.status === 'running' && snapshot.bikeY === 0;
-  const activePickup = pickupQueueRef.current.find((pickup) => !snapshot.collected[pickup.id]);
   const totalCollected = snapshot.inventory.knowledge + snapshot.inventory.tools + snapshot.inventory.people;
   const totalRequired = REQUIRED_COUNT * 3;
-
-  const statusText = useMemo(() => {
-    if (snapshot.status === 'won') {
-      return 'You reached the end of the journey... for now';
-    }
-
-    if (snapshot.status === 'lost') {
-      return 'The bike hit an obstacle. Restart and try the route again.';
-    }
-
-    if (snapshot.status === 'running') {
-      if (activePickup) {
-        return `Ride forward and jump for ${activePickup.label}.`;
-      }
-
-      return 'Keep rolling. New pickups will keep spawning until the pack is complete.';
-    }
-
-    if (snapshot.status === 'ending') {
-      return 'The path is clear. Ride into the horizon.';
-    }
-
-    return 'Start the ride, jump over obstacles, and collect every signal on the road.';
-  }, [activePickup, snapshot.status]);
 
   return (
     <div className="journey-runner-page">
@@ -424,9 +462,6 @@ export function MotorcycleJourneyLab() {
             <p className="hero-text">
             An auto-running motorcycle side scroller. Start the ride, jump over obstacles, collect knowledge, tools, and people, then keep rolling until the pack is complete.          
             </p>
-            
-            {/* Only show status if it exists */}
-            {statusText && <p className="status-text">{statusText}</p>}
 
             <ul className="instructions-list">
             <li>Automatic movement begins when you press Start.</li>
