@@ -5,6 +5,10 @@ const ascherwald_start = '/media/ascherwald_start.png';
 const ascherwald_story = '/media/ascherwald_story.png';
 const ascherwald_journal = '/media/ascherwald_journal.png';
 const catsAgainstDarknessTitle = '/media/cats_against_darkness_logo.png';
+const catsAgainstDarkness_powerups = '/media/cats_against_darkness_powerups.png';
+const catsAgainstDarkness_characters = '/media/cats_against_darkness_characters.png';
+const catsAgainstDarkness_combat = '/media/cats_against_darkness_combat.png';
+const catsAgainstDarkness_boss = '/media/cats_against_darkness_boss.png';
 const shareplateLogo = '/media/shareplate_logo2.png';
 const shareplateDemo = '/media/shareplate_demo.png';
 const scalySanctuaryLogo = '/media/scaly_sanctuary_logo.png';
@@ -244,6 +248,32 @@ export const gameJourney: GameProject[] = [
     imagePath: catsAgainstDarknessTitle,
     imageCaption: 'Pixel-art title banner representing the jam tone and combat fantasy.',
     mediaPlaceholder: '',
+    mediaItems: [
+      {
+        src: catsAgainstDarkness_powerups,
+        alt: 'Cats Against Darkness power-up screen',
+        caption: 'Power-up screen showing the different combat abilities available to the player.',
+        type: 'image',
+      },
+      {
+        src: catsAgainstDarkness_characters,
+        alt: 'Cats Against Darkness character screen',
+        caption: 'Character selection screen showing the different cat characters available to the player.',
+        type: 'image',
+      },
+      {
+        src: catsAgainstDarkness_combat,
+        alt: 'Cats Against Darkness combat screen',
+        caption: 'Combat screen showing the player engaging with enemies.',
+        type: 'image',
+      },
+      {
+        src: catsAgainstDarkness_boss,
+        alt: 'Cats Against Darkness boss fight',
+        caption: 'Boss fight screen showing the player facing a challenging enemy.',
+        type: 'image',
+      },
+    ],
   },
   {
     title: 'MyHabit',
